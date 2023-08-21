@@ -1,0 +1,31 @@
+version: '3'
+services:
+  recipereaper-db:
+    image: mysql:8.0
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - recipereaper-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ds89mg31
+      MYSQL_DATABASE: recipes
+    networks:
+      - recipereaper-network
+
+  recipereaper-site:
+    image: node:20
+    command: "npm install && npm start"
+    ports: 
+      - 127.0.0.1:3000
+    working_dir: /app
+    volumes: 
+      - ./site/src:/app/src
+    networks: 
+      - recipereaper-network
+
+networks:
+  recipereaper-network:
+    external: true
+
+volumes:
+  recipereaper-data:

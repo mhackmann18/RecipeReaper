@@ -43,10 +43,15 @@ if (NODE_ENV === "production") {
     cert: fs.readFileSync("/etc/pki/tls/certs/api_recipereaper_com.crt"),
   };
 
+  // Connect to db and init
+
   https.createServer(options, app).listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
   });
 } else if (NODE_ENV === "development") {
+
+  // Connect to db and init
+  
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
   });
