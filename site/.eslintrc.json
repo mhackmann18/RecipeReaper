@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    // "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "airbnb-base",
+    // "airbnb-typescript/base",
+    "airbnb/rules/react",
+    "prettier"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "consistent-return": "off",
+    "react/forbid-prop-types": "off",
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "no-console": "off",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "no-plusplus": "off"
+    // "no-unused-vars": "off"
+  }
+}

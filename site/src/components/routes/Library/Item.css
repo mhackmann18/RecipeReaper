@@ -1,0 +1,61 @@
+.library-item {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--french-gray);
+  padding: 10px 15px;
+  border-radius: 10px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.library-item:hover {
+  transition: none;
+  background-color: var(--seasalt);
+  cursor: pointer;
+  border-color: var(--french-gray-2);
+}
+
+.library-item .row {
+  color: var(--slate-gray);
+}
+
+.library-item span {
+  padding-right: 8px;
+  margin-right: 8px;
+  border-right: 1px solid var(--french-gray);
+  display: inline-block;
+}
+
+.library-item span:last-child {
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.library-item .right {
+  display: flex;
+  align-items: center;
+}
+
+.library-item .option-btn {
+  margin-left: 16px;
+  color: var(--onyx);
+}
+
+.library-item .option-btn:hover {
+  color: var(--slate-gray);
+}
+
+@container library (max-width: 480px){
+  .library-item {
+    flex-direction: column;
+  }
+
+  .library-item .right {
+    margin-top: 10px;
+  }
+
+  .library-item .option-btn:first-child {
+    margin: 0;
+  }
+}

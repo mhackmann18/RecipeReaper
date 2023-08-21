@@ -1,0 +1,29 @@
+#sub-heading {
+  color: var(--slate-gray);
+}
+
+#sub-heading span {
+  border-right: 1px solid var(--french-gray);
+  padding-right: 8px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+#sub-heading span:last-child {
+  border: none;
+}
+
+#sub-heading .servings-btn {
+  color: var(--slate-gray);
+  font-size: 1rem;
+  width: 20px;
+}
+
+#sub-heading .servings-btn:hover {
+  color: var(--eerie-black);
+}
+
+#sub-heading .servings-btn.active {
+  color: var(--eerie-black);
+  font-weight: 500;
+}

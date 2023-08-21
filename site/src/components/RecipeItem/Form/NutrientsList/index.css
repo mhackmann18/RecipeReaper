@@ -1,0 +1,9 @@
+form#recipe .nutrients-list li {
+  margin-right: 8px;
+  margin-bottom: 10px;
+  display:  inline-block;
+  /* background-color: var(--antiflash-white);
+  border: 1px solid var(--platinum); */
+  /* padding: 7px 5px; */
+  /* border-radius: 4px; */
+}

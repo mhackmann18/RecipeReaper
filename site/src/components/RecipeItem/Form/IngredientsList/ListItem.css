@@ -1,0 +1,66 @@
+.ingredient-name-input-wrapper {
+  margin-left: 4px;
+  flex-grow: 1;
+}
+
+form#recipe .sub-ingredient {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+form#recipe .sub-ingredient .inputs-container .buttons-container {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  height: 2.25rem;
+}
+
+form#recipe .sub-ingredient .inputs-container .buttons-container * {
+  margin-left: 10px;
+}
+
+form#recipe .sub-ingredient .btn {
+  margin-left: 10px;
+  color: var(--eerie-black);
+}
+
+form#recipe .sub-ingredient .btn:hover {
+  color: var(--slate-gray);
+}
+
+form#recipe .sub-ingredient .inputs-container {
+  display: flex;
+  flex-basis: 1;
+  /* margin-bottom: 10px; */
+}
+
+form#recipe .sub-ingredient .inputs-container > * {
+  margin-left: 4px;
+}
+
+form#recipe .sub-ingredient .inputs-container div:first-child {
+  margin: 0;
+}
+
+form#recipe .sub-ingredient input[type="number"] {
+  width: 50px;
+}
+
+.ingredient-unit-input {
+  min-width: 100px;
+}
+
+form#recipe .sub-ingredient input[type="text"] {
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.ingredient-err:first-child {
+  margin-top: 10px;
+}
+
+.ingredient-err {
+  margin-top: 3px;
+}

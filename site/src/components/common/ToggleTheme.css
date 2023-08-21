@@ -1,0 +1,60 @@
+#theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--french-gray);
+  width: 80px;
+  height: 40px;
+  border-radius: 22px;
+}
+
+#theme-toggle.small {
+  scale: 75%;
+  margin: -5px -10px;
+}
+
+#theme-toggle:hover {
+  cursor: pointer;
+}
+
+#theme-toggle .icon {
+  color: var(--french-gray);
+  position: absolute;
+  height: 24px;
+}
+
+.sun {
+  left: 6px;
+}
+
+.moon {
+  right: 10px;
+}
+
+#theme-toggle .round-slider {
+  position: absolute;
+  left: 4px;
+  background-color: var(--french-gray);
+  height: 32px; 
+  width: 32px;
+  border-radius: 50%;
+  transition: left .2s linear;
+}
+
+.dark-mode {
+  --white: #212529ff;
+  --seasalt: #343a40ff;
+  --antiflash-white: #495057ff;
+  --platinum: #6c757dff;
+  --french-gray: #adb5bdff;
+  --french-gray-2: #ced4daff;
+  --slate-gray: #dee2e6ff;
+  --outer-space: #e9ecefff;
+  --onyx: #f8f9faff;
+  --eerie-black: white;
+  --font-color-default: var(--onyx);
+}
+
+body, div, button, input, select {
+  transition: background-color 0.5s ease;
+}

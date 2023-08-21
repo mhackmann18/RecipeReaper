@@ -1,0 +1,11 @@
+#recipe-page {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#recipe-page .spinner-wrapper {
+  margin-top: 43vh;
+  display: flex;
+  justify-content: center;
+}

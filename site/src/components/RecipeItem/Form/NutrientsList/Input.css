@@ -1,0 +1,10 @@
+.nutrient-input-wrapper {
+  /* background-color: var(--white); */
+  border-radius: 4px;
+  /* max-width: 4rem; */
+}
+
+.nutrients-list p {
+  white-space: nowrap;
+  margin-left: 0;
+}

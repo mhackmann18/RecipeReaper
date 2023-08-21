@@ -1,0 +1,26 @@
+#dashboard-page {
+  --sidebar-width: 240px;
+  --sidebar-transition-duration: .25s;
+}
+
+#dashboard-page.sidebar-collapsed {
+  --sidebar-width: 67px;
+}
+
+#dashboard-page-content {
+  padding: 15px 2.5vw;
+  margin-left: var(--sidebar-width);
+  transition: margin var(--sidebar-transition-duration) ease;
+  max-width: 1280px;
+}
+
+#dashboard-page-content #page-heading {
+  margin-bottom: 1.25rem;
+}
+
+@media screen and (max-width: 480px) {
+  #dashboard-page-content {
+    margin-left: 0;
+    margin-bottom: 60px;
+  }
+}

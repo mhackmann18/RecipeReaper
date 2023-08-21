@@ -1,0 +1,23 @@
+#slider-popper {
+  z-index: 1301;
+}
+
+.slider-wrapper {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  border: 1px solid var(--french-gray);
+  padding: 0 1rem;
+  border-radius: 24px;
+  background-color: var(--white);
+  box-shadow: 3px 3px 5px 0px var(--eerie-black);
+}
+
+.slider-wrapper .slider {
+  color: var(--slate-gray);
+}
+
+.slider-wrapper .slider * {
+  box-shadow: none !important;
+}

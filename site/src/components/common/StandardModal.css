@@ -1,0 +1,13 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background-color: var(--white);
+  padding: max(1vw, 2vh);
+  border-radius: 8px;
+  border: 1px solid var(--french-gray);
+  max-width: 90vw;
+}

@@ -1,0 +1,349 @@
+[
+    {
+        "id": 1,
+        "cookTime": 240,
+        "ingredients": [
+            "1.5 pounds boneless skinless chicken breasts",
+            "2 teaspoons garlic (minced)",
+            "2 teaspoons ginger (minced)",
+            "0.25 cup honey",
+            "3 tablespoons brown sugar",
+            "0.5 cup low sodium soy sauce",
+            "2 teaspoons toasted sesame oil",
+            "2 tablespoons rice vinegar",
+            "0.25 cup cold water",
+            "2 tablespoons cornstarch",
+            "1 tablespoon sesame seeds",
+            "2 tablespoons sliced green onions"
+        ],
+        "instructions": [
+            "Place the chicken breasts in a slow cooker.",
+            "In a small bowl, whisk together the garlic, ginger, honey, brown sugar, soy sauce sesame oil and rice vinegar.",
+            "Pour the soy sauce mixture over the chicken.",
+            "Cover and cook on HIGH for 3-4 hours or LOW for 6-7 hours.",
+            "Remove the chicken from the slow cooker and shred with two forks.",
+            "Pour the teriyaki sauce from the slow cooker through a strainer into a saucepan.",
+            "Place the saucepan on the stove over medium high heat and bring to a simmer.",
+            "In a small bowl, mix the cornstarch with the water until dissolved.",
+            "Pour the cornstarch into the pan and bring a boil. Cook for 1-2 minutes or until sauce has just thickened.",
+            "Pour the sauce over the shredded chicken and toss to coat the chicken. Sprinkle with sesame seeds and green onions, then serve."
+        ],
+        "nutrients": {
+            "calories": {
+                "quantity": 227,
+                "unit": "kcal"
+            },
+            "carbohydrate": {
+                "quantity": 22,
+                "unit": "g"
+            },
+            "cholesterol": {
+                "quantity": 72,
+                "unit": "mg"
+            },
+            "fat": {
+                "quantity": 3,
+                "unit": "g"
+            },
+            "protein": {
+                "quantity": 25,
+                "unit": "g"
+            },
+            "sodium": {
+                "quantity": 542,
+                "unit": "mg"
+            },
+            "sugar": {
+                "quantity": 17,
+                "unit": "g"
+            }
+        },
+        "prepTime": 10,
+        "title": "Slow Cooker Teriyaki Chicken",
+        "servings": 6,
+        "servingSize": { "quantity": 1, "unit": "serving" }
+    },
+    {
+        "id": 2,
+        "cookTime": 15,
+        "ingredients": [
+            "1 pound lean ground beef (90% lean)",
+            "3 garlic cloves (minced)",
+            "0.25 cup packed brown sugar",
+            "0.25 cup reduced-sodium soy sauce",
+            "2 teaspoons sesame oil",
+            "0.25 teaspoon ground ginger",
+            "0.25 teaspoon crushed red pepper flakes",
+            "0.25 teaspoon pepper",
+            "2 cups hot cooked white or brown rice",
+            "sliced green onions and sesame seeds for garnish"
+        ],
+        "instructions": [
+            "In a large skillet cook the ground beef and garlic breaking it into crumbles over medium heat until no longer pink. Drain the grease.",
+            "In a small bowl whisk brown sugar, soy sauce, sesame oil, ginger, red pepper flakes and pepper. Pour over the ground beef and let simmer for another minute or two.",
+            "Serve over hot rice and garnish with green onions and sesame seeds."
+        ],
+        "nutrients": {
+            "calories": {
+                "quantity": 238,
+                "unit": "kcal"
+            },
+            "carbohydrate": {
+                "quantity": 16,
+                "unit": "g"
+            },
+            "cholesterol": {
+                "quantity": 70,
+                "unit": "mg"
+            },
+            "fat": {
+                "quantity": 8,
+                "unit": "g"
+            },
+            "fiber": {
+                "quantity": 1,
+                "unit": "g"
+            },
+            "protein": {
+                "quantity": 25,
+                "unit": "g"
+            },
+            "saturatedFat": {
+                "quantity": 3,
+                "unit": "g"
+            },
+            "sodium": {
+                "quantity": 610,
+                "unit": "mg"
+            },
+            "sugar": {
+                "quantity": 14,
+                "unit": "g"
+            }
+        },
+        "prepTime": 5,
+        "title": "Korean Ground Beef and Rice Bowls",
+        "servings": 4,
+        "servingSize": { "quantity": 1, "unit": "serving" }
+    },
+    {
+        "id": 3,
+        "cookTime": 6,
+        "ingredients": [
+            "2 (12-oz) New York strip or ribeye steaks or 4 (6-oz) filet mignons, about 1 inches thick",
+            "1 heaping teaspoon kosher salt",
+            "0.5 teaspoon freshly ground black pepper",
+            "2 tablespoons vegetable oil",
+            "1 tablespoon unsalted butter",
+            "A few sprigs fresh thyme leaves"
+        ],
+        "instructions": [
+            "To begin, pat the steaks dry with paper towels.",
+            "Season the steaks all over with the salt and pepper.",
+            "Turn on your exhaust fan and heat a heavy pan (preferably cast iron or stainless steel) over medium-high heat until it's VERY hot.",
+            "Add the oil to the pan and heat until it begins to shimmer and move fluidly around the pan.",
+            "Carefully set the steaks in the pan, releasing them away from you so the oil doesn’t splatter in your direction. The oil should sizzle.",
+            "Leave the steaks alone! Avoid the temptation to peek or fiddle or flip repeatedly; the steaks need a few minutes undisturbed to develop a golden crust. Flip the steaks when they release easily and the bottom is a deep-brown color, about 3 minutes. Continue to cook the steaks for another 3 to 4 minutes on the second side for rare to medium-rare. (For medium, cook 4 to 5 minutes on second side; for well-done, cook 5 to 6 minutes on second side).",
+            "During the last minute of cooking, add the butter and thyme sprigs to the pan with the steaks.",
+            "If you are serving the steaks unsliced, transfer them to plates and serve hot. If you plan to slice the steaks, transfer them to a cutting board and let rest, covered with aluminum foil, for 5 to 10 minutes; then slice thinly against the grain."
+        ],
+        "nutrients": {
+            "calories": {
+                "quantity": 492,
+                "unit": "kcal"
+            },
+            "cholesterol": {
+                "quantity": 147,
+                "unit": "mg"
+            },
+            "fat": {
+                "quantity": 39,
+                "unit": "g"
+            },
+            "protein": {
+                "quantity": 33,
+                "unit": "g"
+            },
+            "saturatedFat": {
+                "quantity": 14,
+                "unit": "g"
+            },
+            "sodium": {
+                "quantity": 421,
+                "unit": "mg"
+            }
+        },
+        "prepTime": 4,
+        "title": "Pan-Seared Steaks",
+        "servings": 4,
+        "servingSize": { "quantity": 1, "unit": "6-oz portion NY Strip"}
+    },
+    {
+        "id": 4,
+        "cookTime": 50,
+        "ingredients": [
+            "1 (15 ounce) can pumpkin puree",
+            "1 (14 ounce) can EAGLE BRAND® Sweetened Condensed Milk",
+            "2 large eggs",
+            "1 teaspoon ground cinnamon",
+            "0.5 teaspoon ground ginger",
+            "0.5 teaspoon ground nutmeg",
+            "0.5 teaspoon salt",
+            "1 (9 inch) unbaked pie crust"
+        ],
+        "instructions": [
+            "Gather all ingredients.",
+            "Preheat the oven to 425 degrees F (220 degrees C).",
+            "Whisk pumpkin puree, condensed milk, eggs, cinnamon, ginger, nutmeg, and salt together in a medium bowl until smooth.",
+            "Pour into crust.",
+            "Bake in the preheated oven for 15 minutes.",
+            "Reduce oven temperature to 350 degrees F (175 degrees C) and continue baking until a knife inserted 1 inch from the crust comes out clean, 35 to 40 minutes.",
+            "Let cool before serving."
+        ],
+        "nutrients": {
+            "calories": {
+                "quantity": 379,
+                "unit": "kcal"
+            },
+            "carbohydrate": {
+                "quantity": 31,
+                "unit": "g"
+            },
+            "cholesterol": {
+                "quantity": 64,
+                "unit": "mg"
+            },
+            "fat": {
+                "quantity": 14,
+                "unit": "g"
+            },
+            "fiber": {
+                "quantity": 3,
+                "unit": "g"
+            },
+            "protein": {
+                "quantity": 6,
+                "unit": "g"
+            },
+            "saturatedFat": {
+                "quantity": 6,
+                "unit": "g"
+            },
+            "sodium": {
+                "quantity": 352,
+                "unit": "mg"
+            },
+            "sugar": {
+                "quantity": 18,
+                "unit": "g"
+            },
+            "unsaturatedFat": {
+                "quantity": 0,
+                "unit": "g"
+            }
+        },
+        "prepTime": 10,
+        "title": "Perfect Pumpkin Pie",
+        "servings": 8,
+        "servingSize": { "quantity": 1, "unit": "serving" }
+    },
+    {
+        "id": 5,
+        "ingredients": [
+            "1 pound ground beef ((or 0.5 pound ground Italian sausage and 0.5 pound ground beef))",
+            "salt and freshly ground black pepper (, to taste)",
+            "1 medium onion (, chopped)",
+            "15 ounces tomato sauce",
+            "6 ounces tomato paste",
+            "0.5 teaspoon Italian seasoning",
+            "1 tablespoon dried parsley flakes",
+            "1 teaspoon garlic powder",
+            "crushed red pepper flakes (, to taste)",
+            "1 tablespoon Worcestershire sauce",
+            "1 tablespoon granulated sugar",
+            "1 cup water",
+            "0.25 cup fresh basil leaves ((optional))",
+            "spaghetti noodles (, for serving)"
+        ],
+        "instructions": [
+            "Season ground beef with salt and pepper.",
+            "In a large skillet, add the beef and chopped onion and brown. Drain excess grease.",
+            "Add tomato sauce, tomato paste, Italian seasoning, parsley, garlic powder, crushed red pepper, worcestershire, and sugar to the skillet.",
+            "Stir well to combine and bring to a boil. Add water and stir well.",
+            "Reduce heat and simmer for 30 minutes. Add chopped basil before serving, if desired.",
+            "This sauce tastes great in Spaghetti Pie, Million Dollar Spaghetti, Slow Cooker Lasagna and Instant Pot Spaghetti."
+        ],
+        "nutrients": {
+            "calories": {
+                "quantity": 303,
+                "unit": "kcal"
+            },
+            "carbohydrate": {
+                "quantity": 16,
+                "unit": "g"
+            },
+            "cholesterol": {
+                "quantity": 64,
+                "unit": "mg"
+            },
+            "fat": {
+                "quantity": 18,
+                "unit": "g"
+            },
+            "fiber": {
+                "quantity": 3,
+                "unit": "g"
+            },
+            "protein": {
+                "quantity": 18,
+                "unit": "g"
+            },
+            "saturatedFat": {
+                "quantity": 7,
+                "unit": "g"
+            },
+            "sodium": {
+                "quantity": 814,
+                "unit": "mg"
+            },
+            "sugar": {
+                "quantity": 11,
+                "unit": "g"
+            }
+        },
+        "title": "Homemade Spaghetti Sauce",
+        "servings": 5,
+        "servingSize": { "quantity": 1, "unit": "serving" }
+    },
+    {
+        "id": 6,
+        "ingredients": [
+            "1 pound ground beef ((or 0.5 pound ground Italian sausage and 0.5 pound ground beef))",
+            "salt and freshly ground black pepper (, to taste)",
+            "1 medium onion (, chopped)",
+            "15 ounces tomato sauce",
+            "6 ounces tomato paste",
+            "0.5 teaspoon Italian seasoning",
+            "1 tablespoon dried parsley flakes",
+            "1 teaspoon garlic powder",
+            "crushed red pepper flakes (, to taste)",
+            "1 tablespoon Worcestershire sauce",
+            "1 tablespoon granulated sugar",
+            "1 cup water",
+            "0.25 cup fresh basil leaves ((optional))",
+            "spaghetti noodles (, for serving)"
+        ],
+        "instructions": [
+            "Season ground beef with salt and pepper.",
+            "In a large skillet, add the beef and chopped onion and brown. Drain excess grease.",
+            "Add tomato sauce, tomato paste, Italian seasoning, parsley, garlic powder, crushed red pepper, worcestershire, and sugar to the skillet.",
+            "Stir well to combine and bring to a boil. Add water and stir well.",
+            "Reduce heat and simmer for 30 minutes. Add chopped basil before serving, if desired.",
+            "This sauce tastes great in Spaghetti Pie, Million Dollar Spaghetti, Slow Cooker Lasagna and Instant Pot Spaghetti."
+        ],
+        "nutrients": null,
+        "title": "Homemade Spaghetti Sauce",
+        "servings": 5,
+        "servingSize": { "quantity": 1, "unit": "serving" }
+    }
+]

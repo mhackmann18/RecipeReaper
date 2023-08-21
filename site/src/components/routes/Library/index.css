@@ -1,0 +1,25 @@
+#library-page {
+  container-type: inline-size;
+  container-name: library;
+}
+
+#library-page .center-content {
+  margin-top: 43vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#library-page #empty-library-message {
+  text-align: center;
+  color: var(--french-gray-2);
+  line-height: 1.8rem;
+}
+
+#library-page #empty-library-message a {
+  text-decoration: underline;
+  /* color: var(--slate-gray); */
+  font-weight: 500;
+  color: var(--french-gray-2);
+}

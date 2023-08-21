@@ -1,0 +1,52 @@
+.MuiInputBase-root {
+   background-color: var(--white);
+}
+
+.MuiTextField-root .MuiInputBase-input {
+  color: var(--onyx);
+}
+
+.MuiTextField-root .MuiFormHelperText-root {
+  margin-left: 0;
+  font-weight: 600;
+}
+
+.MuiTextField-root.nowrap .MuiFormHelperText-root {
+  white-space: nowrap;
+}
+
+.MuiTextField-root .MuiInputAdornment-root p {
+  color: var(--slate-gray);
+}
+
+.MuiTextField-root fieldset {
+  border-color: var(--french-gray-2);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover fieldset {
+  border-color: var(--slate-gray);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-error:hover fieldset {
+  border-color: var(--error-color);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--eerie-black);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused.Mui-error fieldset {
+  border-color: var(--error-color);
+}
+
+.MuiTextField-root label {
+  color: var(--french-gray-2);
+}
+
+.MuiTextField-root label.Mui-focused{
+  color: var(--eerie-black);
+}
+
+.MuiTextField-root label.Mui-focused.Mui-error {
+  color: var(--error-color);
+}

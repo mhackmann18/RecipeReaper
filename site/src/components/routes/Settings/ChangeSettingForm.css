@@ -1,0 +1,39 @@
+.settings-change-form .row {
+  display: flex;
+  width: 100%;
+  margin-top: .5rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.settings-change-form .row.buttons {
+  justify-content: flex-end;
+}
+
+.settings-change-form .row:first-child {
+  margin-top: 0;
+}
+
+.settings-change-form .row label {
+  display: flex;
+  align-items: center;
+  color: var(--outer-space);
+  margin-right: .5rem;
+  width: 10rem;
+}
+
+.settings-change-form input {
+  flex-grow: 1;
+  border: 1px solid var(--french-gray);
+  padding: .25rem;
+  border-radius: 4px;
+  min-width: 160px;
+}
+
+.settings-change-form button {
+  margin-left: .5rem;
+}
+
+.settings-change-error {
+  margin-top: .5rem;
+}

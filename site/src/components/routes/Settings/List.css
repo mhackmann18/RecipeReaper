@@ -1,0 +1,22 @@
+#settings-list {
+  width: 100%;
+  /* max-width: 600px; */
+}
+
+.settings-list-item-content {
+  display: flex;
+  justify-content: space-between;
+  color: var(--outer-space);
+}
+
+.settings-list-item-content input {
+  width: 100%;
+}
+
+.btn-link {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--onyx);
+}

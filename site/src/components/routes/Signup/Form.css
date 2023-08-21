@@ -1,0 +1,52 @@
+.account-form {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  margin: auto;
+}
+
+.account-form h2 {
+  text-align: center;
+}
+
+#login-msg {
+  text-align: center;
+  color: var(--slate-gray);
+  margin: 15px 0;
+}
+
+#signup-msg {
+  margin-top: 20px;
+  color: var(--slate-gray);
+  margin-bottom: 16px;
+}
+
+#signup-msg a,
+#login-msg a {
+  color: var(--eerie-black);
+  text-decoration: underline;
+}
+
+.account-form label {
+  margin-top: 8px;
+}
+
+.account-form input {
+  padding: 8px;
+  border: 1px solid var(--french-gray);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.account-form button {
+  margin-top: 8px;
+  padding: 12px;
+  font-weight: 500;
+}
+
+#account-form-submit-error {
+  margin-top: 16px;
+}

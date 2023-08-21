@@ -1,0 +1,6 @@
+/* Styling only applies to the imported recipe on the home page */
+#splash-page #import-recipe {
+  margin-top: 84px;
+  margin-bottom: 1rem;
+  padding: 0 .8rem
+}

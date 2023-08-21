@@ -1,0 +1,21 @@
+#splash-page {
+  display: flex;
+  justify-content: center;
+  font-family: 'Work Sans', sans-serif;
+}
+
+#splash-page .content-wrapper {
+  width: 100vw;
+}
+
+#splash-page .content {
+  margin: 0 auto;
+  width: 76vw;
+  max-width: 1280px;
+}
+
+@media screen and (max-width: 992px) {
+  #splash-page .content {
+    width: 100vw;
+  }
+}

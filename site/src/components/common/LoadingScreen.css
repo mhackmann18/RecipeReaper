@@ -1,0 +1,17 @@
+#loading-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loading-page .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loading-page .crook-img {
+  height: 10vw;
+}

@@ -1,0 +1,15 @@
+form#recipe .add-btn {
+  background-color: transparent;
+  border-radius: .25rem;
+  border: none;
+  font-size: 1rem;
+  padding: .25rem .75rem;
+  color: var(--outer-space);
+  border: 1px solid var(--outer-space);
+}
+
+form#recipe .add-btn:hover {
+  color: var(--eerie-black);
+  border-color: var(--eerie-black);
+  outline: 1px solid var(--eerie-black);
+}

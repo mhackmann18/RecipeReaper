@@ -1,0 +1,12 @@
+#signup-page {
+  display: flex;
+}
+
+.account-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+#signup-msg {
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+#settings-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+#settings .buttons-container {
+  text-align: center;
+}
+
+#settings .buttons-container button {
+  display: block;
+  margin: 10px auto;
+}

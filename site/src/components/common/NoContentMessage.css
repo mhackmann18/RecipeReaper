@@ -1,0 +1,11 @@
+.no-content-message {
+  margin-top: 43vh;
+  display: flex;
+  justify-content: center;
+}
+
+.no-content-message .container {
+  color: var(--french-gray-2);
+  text-align: center;
+  line-height: 1.8rem;
+}

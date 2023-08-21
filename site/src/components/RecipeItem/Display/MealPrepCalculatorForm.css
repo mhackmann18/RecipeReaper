@@ -1,0 +1,95 @@
+#mpc-form {
+  /* padding: .5rem; */
+  padding: max(.5vw, 1vh);
+}
+
+#mpc-form header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+#mpc-help-icon:hover {
+  color: var(--slate-gray);
+}
+
+#mpc-form h2 {
+  margin-right: 1rem;
+}
+
+#mpc-form h3 {
+  display: inline-block;
+  color: var(--outer-space);
+  margin-right: .5rem;
+  font-weight: 500;
+}
+
+#mpc-form h3:first-child {
+  margin-bottom: .75rem;
+}
+
+#meals-quantity-container, #meal-size-container {
+  margin-bottom: 1rem;
+}
+
+#meal-size-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .9rem;
+  color: var(--french-gray-2);
+  margin-bottom: .3rem;
+}
+
+@media screen and (min-width: 480px) {
+  #meal-size-buttons-container button {
+    margin-left: .5rem;
+  }
+}
+
+#meal-size-buttons-container button {
+  background: none;
+  border: none;
+  color: var(--french-gray-2);
+  font-size: .9rem;
+  padding: .4rem 1rem;
+  transition: none;
+  border-radius: 1rem;
+  /* margin-left: 8px; */
+}
+
+#meal-size-buttons-container button:hover {
+  color: var(--slate-gray);
+  background-color: var(--seasalt);
+}
+
+#meal-size-buttons-container button.active {
+  background-color: var(--antiflash-white);
+  color: var(--outer-space);
+}
+
+#meal-size-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#meal-size-header > * {
+  display: inline-block;
+}
+
+#mpc-submit-btn {
+  width: 100%;
+  padding: 1rem;
+}
+
+#mpc-info-tip {
+  margin-top: .25rem;
+  background-color: var(--white);
+  border: 1px solid var(--eerie-black);
+  border-radius: .5rem;
+  padding: .5rem;
+  max-width: 14rem;
+  font-size: .8rem;
+}

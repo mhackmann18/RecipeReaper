@@ -1,0 +1,31 @@
+#instructions-list {
+  --instruction-hover-border-radius: 4px; 
+  --instruction-hover-background-color: var(--antiflash-white); 
+  --instruction-hover-transition-duration: .1s; 
+}
+
+.form-style #instructions-list {
+  margin: 0;
+}
+
+.form-style #instructions-list li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.instruction-input-wrapper {
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.form-style #instructions-list .btn {
+  display: inline;
+  margin-left: 10px;
+  margin-top: 8px;
+  vertical-align: middle;
+  color: var(--eerie-black)
+}
+
+.form-style #instructions-list .btn:hover {
+  color: var(--slate-gray);
+}
