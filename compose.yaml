@@ -1,7 +1,7 @@
 version: '1'
 
 services:
-  recipereaper-db:
+  db:
     image: mysql:8.0
     ports:
       - 127.0.0.1:3306:3306
@@ -13,7 +13,7 @@ services:
     networks:
       - recipereaper
 
-  recipereaper-api:
+  api:
     image: recipereaper-api
     ports:
       - 127.0.0.1:8080:8080
@@ -22,9 +22,9 @@ services:
     networks:
       - recipereaper
     depends_on:
-      - recipereaper-db
+      - db
 
-  recipereaper-site:
+  site:
     image: recipereaper-site
     ports: 
       - 127.0.0.1:3000:3000
