@@ -23,6 +23,9 @@ services:
       - recipereaper
     depends_on:
       - db
+    build: 
+      context: ./api
+      dockerfile: Dockerfile.dev
 
   site:
     image: recipereaper-site
@@ -32,6 +35,9 @@ services:
       - ./site/src:/app/src
     networks: 
       - recipereaper
+    build: 
+      context: ./site
+      dockerfile: Dockerfile.dev
 
 networks:
   recipereaper:
