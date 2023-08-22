@@ -7,7 +7,7 @@ require("dotenv").config({ path: `${__dirname}/config.env` });
 
 const { requestWrapper } = utils;
 
-const setCookieOptions = {
+const setCookieOptions = { 
   maxAge: process.env.ACCESS_TOKEN_EXPIRES_IN,
   path: "/",
   ...(process.env.NODE_ENV === "production" && {

@@ -51,7 +51,7 @@ if (NODE_ENV === "production") {
 } else if (NODE_ENV === "development") {
 
   // Connect to db and init
-  
+
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
   });
