@@ -5,6 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const https = require("https");
 const fs = require("fs");
+const init = require("./app/utilities/init");
 const logRequest = require("./app/middleware/logRequest");
 
 const app = express();
@@ -45,14 +46,21 @@ if (NODE_ENV === "production") {
 
   // Connect to db and init
 
-  https.createServer(options, app).listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-  });
-} else if (NODE_ENV === "development") {
+  init().then(() =>
+    https.createServer(options, app).listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}.`);
+    })
+  );
+}
 
-  // Connect to db and init
-
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-  });
+if (NODE_ENV === "development") {
+  try {
+    init().then(() => {
+      app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}.`);
+      });
+    });
+  } catch (err) {
+    console.log(err.red);
+  }
 }
