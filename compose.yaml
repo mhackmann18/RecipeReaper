@@ -21,6 +21,8 @@ services:
       - ./api/app:/app/app
     networks:
       - recipereaper
+    depends_on:
+      - recipereaper-db
 
   recipereaper-site:
     image: recipereaper-site
