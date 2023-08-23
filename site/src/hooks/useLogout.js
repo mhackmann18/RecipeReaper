@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import useUser from "./useUser";
-import config from "../config";
 
 export default function useLogout() {
   const { setUser } = useUser();
@@ -10,7 +9,7 @@ export default function useLogout() {
   const logout = (message) => {
     Cookies.remove("access_token", {
       path: "/",
-      domain: config.DOMAIN,
+      domain: process.env.REACT_APP_DOMAIN,
     });
     setUser(null);
     if (message) {

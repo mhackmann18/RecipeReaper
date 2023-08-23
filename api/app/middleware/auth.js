@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
+const fs = require("fs");
 const { printErrMsg } = require("../utilities/utils");
 
 const config = process.env;
@@ -17,7 +18,10 @@ const verifyToken = (checkPrivilegesFn) => (req, res, next) => {
         .send({ message: "Please login", error: config.NO_TOKEN_ERR });
     }
 
-    const user = jwt.verify(cookies.access_token, config.ACCESS_TOKEN_KEY);
+    const user = jwt.verify(
+      cookies.access_token,
+      fs.readFileSync(config.ACCESS_TOKEN_KEY_FILE, "utf-8")
+    );
     req.user = user;
 
     if (

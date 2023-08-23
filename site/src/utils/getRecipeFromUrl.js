@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { isValidHttpURL } from "./validation";
 import Recipe from "./Recipe";
-import config from "../config";
 
 // Return Recipe or error string
 export default async function getRecipeFromUrl(url) {
@@ -13,7 +12,7 @@ export default async function getRecipeFromUrl(url) {
 
   try {
     response = await fetch(
-      `${config.API_SCRAPER_ORIGIN}/recipe-data?url=${url}`
+      `${process.env.REACT_APP_SCRAPER_ORIGIN}/recipe-data?url=${url}`
     );
   } catch (error) {
     return error;

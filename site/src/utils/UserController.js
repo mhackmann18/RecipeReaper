@@ -1,7 +1,6 @@
-import config from "../config";
 import Recipe from "./Recipe";
 
-const { API_ORIGIN: ORIGIN } = config;
+const { REACT_APP_API_ORIGIN: ORIGIN } = process.env;
 
 export default class UserController {
   static async create(user) {

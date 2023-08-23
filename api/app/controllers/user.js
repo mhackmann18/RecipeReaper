@@ -1,10 +1,15 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
+const fs = require("fs");
 const utils = require("../utilities/utils");
 const User = require("../models/User");
 require("dotenv").config({ path: `${__dirname}/config.env` });
 
+const ACCESS_TOKEN_KEY = fs.readFileSync(
+  process.env.ACCESS_TOKEN_KEY_FILE,
+  "utf-8"
+);
 const { requestWrapper } = utils;
 
 const setCookieOptions = {
@@ -71,11 +76,9 @@ exports.register = requestWrapper(User, async (req, res, user) => {
 
   const newUser = await user.create({ ...req.body, password: hash });
 
-  const accessToken = jwt.sign(
-    { username, id: newUser.id },
-    process.env.ACCESS_TOKEN_KEY,
-    { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000 }
-  );
+  const accessToken = jwt.sign({ username, id: newUser.id }, ACCESS_TOKEN_KEY, {
+    expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000,
+  });
 
   res.setHeader(
     "Set-Cookie",
@@ -145,7 +148,7 @@ exports.login = requestWrapper(User, async (req, res, user) => {
   if (await bcrypt.compare(password, existingUser.password)) {
     const accessToken = jwt.sign(
       { username, id: existingUser.id },
-      process.env.ACCESS_TOKEN_KEY,
+      ACCESS_TOKEN_KEY,
       { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000 }
     );
 
@@ -231,7 +234,7 @@ exports.update = requestWrapper(User, async (req, res, db) => {
   if (newUsername) {
     const token = jwt.sign(
       { username: newUsername, id: updatedUser.id },
-      process.env.ACCESS_TOKEN_KEY,
+      ACCESS_TOKEN_KEY,
       {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000,
       }

@@ -8,8 +8,10 @@ services:
     volumes:
       - recipereaper-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ds89mg31
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
       MYSQL_DATABASE: recipes
+    secrets:
+      - db_password
     networks:
       - recipereaper
 
@@ -21,11 +23,31 @@ services:
       - ./api/app:/app/app
     networks:
       - recipereaper
-    depends_on:
-      - db
     build: 
       context: ./api
       dockerfile: Dockerfile.dev
+    environment:
+      PORT: 8080
+      CORS_ORIGIN: http://localhost:3000
+      ACCESS_TOKEN_KEY_FILE: /run/secrets/api_access_token_key
+      ACCESS_TOKEN_EXPIRES_IN: 3600
+      NODE_ENV: development
+      INVALID_TOKEN_ERR: invalid-token
+      NO_TOKEN_ERR: no-token
+      NO_PERMISSION_ERR: permission-denied
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_DB: recipes
+      ADMIN_USERNAME: god_of_prepmaster
+    secrets:
+      - api_access_token_key
+      - db_password
+    depends_on:
+      - db
+    # https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+    command: ["./wait-for-it.sh", "db:3306", "--", "npm", "start"]
 
   site:
     image: recipereaper-site
@@ -38,10 +60,20 @@ services:
     build: 
       context: ./site
       dockerfile: Dockerfile.dev
+    environment:
+      REACT_APP_DOMAIN: localhost
+      REACT_APP_API_ORIGIN: http://localhost:8080
+      REACT_APP_SCRAPER_ORIGIN: https://api.recipereaper.com
 
 networks:
   recipereaper:
     external: true
+
+secrets:
+  db_password:
+    file: db_password.secret.txt
+  api_access_token_key:
+    file: api_access_token_key.secret.txt
 
 volumes:
   recipereaper-data:
