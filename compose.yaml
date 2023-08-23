@@ -32,9 +32,6 @@ services:
       ACCESS_TOKEN_KEY_FILE: /run/secrets/api_access_token_key
       ACCESS_TOKEN_EXPIRES_IN: 3600
       NODE_ENV: development
-      INVALID_TOKEN_ERR: invalid-token
-      NO_TOKEN_ERR: no-token
-      NO_PERMISSION_ERR: permission-denied
       MYSQL_HOST: db
       MYSQL_PORT: 3306
       MYSQL_USER: root
@@ -46,7 +43,6 @@ services:
       - db_password
     depends_on:
       - db
-    # https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
     command: ["./wait-for-it.sh", "db:3306", "--", "npm", "start"]
 
   site:

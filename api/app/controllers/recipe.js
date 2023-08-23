@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
 const Recipe = require("../models/Recipe");
 const { requestWrapper } = require("../utilities/utils");
+const errorCodes = require("../utilities/errorCodes");
 
-const config = process.env;
-const { NO_PERMISSION_ERR } = config;
+const { NO_PERMISSION_ERR } = errorCodes;
 
 // Create and Save a new recipe
 exports.create = requestWrapper(Recipe, async (req, res, recipe) => {

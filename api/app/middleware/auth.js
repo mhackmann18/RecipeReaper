@@ -2,8 +2,7 @@ const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const fs = require("fs");
 const { printErrMsg } = require("../utilities/utils");
-
-const config = process.env;
+const errorCodes = require("../utilities/errorCodes");
 
 const verifyToken = (checkPrivilegesFn) => (req, res, next) => {
   try {
@@ -13,14 +12,15 @@ const verifyToken = (checkPrivilegesFn) => (req, res, next) => {
       printErrMsg({
         message: "No access token provided",
       });
-      return res
-        .status(401)
-        .send({ message: "Please login", error: config.NO_TOKEN_ERR });
+      return res.status(401).send({
+        message: "Please login",
+        error: errorCodes.INVALID_TOKEN_ERR,
+      });
     }
 
     const user = jwt.verify(
       cookies.access_token,
-      fs.readFileSync(config.ACCESS_TOKEN_KEY_FILE, "utf-8")
+      fs.readFileSync(process.env.ACCESS_TOKEN_KEY_FILE, "utf-8")
     );
     req.user = user;
 
@@ -31,14 +31,14 @@ const verifyToken = (checkPrivilegesFn) => (req, res, next) => {
       printErrMsg({ message: "Permission denied" });
       return res.status(403).send({
         message: "Permission denied",
-        error: config.NO_PERMISSION_ERR,
+        error: errorCodes.NO_PERMISSION_ERR,
       });
     }
   } catch (error) {
     printErrMsg(error);
     return res
       .status(401)
-      .send({ message: "Invalid Token", error: config.INVALID_TOKEN_ERR });
+      .send({ message: "Invalid Token", error: errorCodes.INVALID_TOKEN_ERR });
   }
   return next();
 };
