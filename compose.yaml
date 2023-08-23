@@ -15,6 +15,16 @@ services:
     networks:
       - recipereaper
 
+  scraper:
+    image: recipereaper-scraper
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile.dev
+    ports:
+      - 127.0.0.1:8000:8000
+    networks:
+      - recipereaper
+
   api:
     image: recipereaper-api
     ports:
@@ -59,7 +69,7 @@ services:
     environment:
       REACT_APP_DOMAIN: localhost
       REACT_APP_API_ORIGIN: http://localhost:8080
-      REACT_APP_SCRAPER_ORIGIN: https://api.recipereaper.com
+      REACT_APP_SCRAPER_ORIGIN: http://localhost:8000
 
 networks:
   recipereaper:

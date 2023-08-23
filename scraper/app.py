@@ -1,12 +1,14 @@
 """Web app for scraping recipe data"""
 
 from flask import Flask, request
+from flask_cors import CORS
 from recipe_scrapers import scrape_me
 import recipe_scrapers._exceptions
 import validators
 import requests.exceptions
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
