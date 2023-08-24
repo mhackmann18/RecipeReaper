@@ -76,9 +76,9 @@ networks:
 
 secrets:
   db_password:
-    file: db_password.secret.txt
+    file: db_password.txt
   api_access_token_key:
-    file: api_access_token_key.secret.txt
+    file: api_access_token_key.txt
 
 volumes:
   recipereaper-data:

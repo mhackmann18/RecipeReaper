@@ -30,4 +30,5 @@ __pycache__/
 .venv
 
 # Secrets used in docker compose
-*.secret.txt
+jwt_secret.txt
+db_password.txt
