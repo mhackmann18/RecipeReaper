@@ -5,10 +5,7 @@ const fs = require("fs");
 const utils = require("../utilities/utils");
 const User = require("../models/User");
 
-const ACCESS_TOKEN_KEY = fs.readFileSync(
-  process.env.ACCESS_TOKEN_KEY_FILE,
-  "utf-8"
-);
+const JWT_SECRET = fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8");
 const { requestWrapper } = utils;
 
 const setCookieOptions = {
@@ -75,7 +72,7 @@ exports.register = requestWrapper(User, async (req, res, user) => {
 
   const newUser = await user.create({ ...req.body, password: hash });
 
-  const accessToken = jwt.sign({ username, id: newUser.id }, ACCESS_TOKEN_KEY, {
+  const accessToken = jwt.sign({ username, id: newUser.id }, JWT_SECRET, {
     expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000,
   });
 
@@ -147,7 +144,7 @@ exports.login = requestWrapper(User, async (req, res, user) => {
   if (await bcrypt.compare(password, existingUser.password)) {
     const accessToken = jwt.sign(
       { username, id: existingUser.id },
-      ACCESS_TOKEN_KEY,
+      JWT_SECRET,
       { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000 }
     );
 
@@ -233,7 +230,7 @@ exports.update = requestWrapper(User, async (req, res, db) => {
   if (newUsername) {
     const token = jwt.sign(
       { username: newUsername, id: updatedUser.id },
-      ACCESS_TOKEN_KEY,
+      JWT_SECRET,
       {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN * 1000,
       }

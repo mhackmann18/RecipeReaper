@@ -6,13 +6,9 @@ const logRequest = (req, res, next) => {
   let user;
   try {
     const cookies = req.headers?.cookie && cookie.parse(req.headers.cookie);
-    const ACCESS_TOKEN_KEY = fs.readFileSync(
-      process.env.ACCESS_TOKEN_KEY_FILE,
-      "utf-8"
-    );
+    const JWT_SECRET = fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8");
     user =
-      cookies?.access_token &&
-      jwt.verify(cookies.access_token, ACCESS_TOKEN_KEY);
+      cookies?.access_token && jwt.verify(cookies.access_token, JWT_SECRET);
   } finally {
     console.log(
       `Method: ${req.method.bold}  Endpoint: ${req.url.bold}  User: ${
