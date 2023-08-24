@@ -4,7 +4,6 @@ const cookie = require("cookie");
 const fs = require("fs");
 const utils = require("../utilities/utils");
 const User = require("../models/User");
-require("dotenv").config({ path: `${__dirname}/config.env` });
 
 const ACCESS_TOKEN_KEY = fs.readFileSync(
   process.env.ACCESS_TOKEN_KEY_FILE,
