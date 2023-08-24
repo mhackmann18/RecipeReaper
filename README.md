@@ -28,4 +28,4 @@ Run the app
 ```bash
 docker compose up -d
 ```
-Open your browser and visit http://localhost:3000. The app should be up and running!
+Open your browser and visit http://localhost:3000. The app should be up and running.
