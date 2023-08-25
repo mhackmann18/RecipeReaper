@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import SavedRecipeItem from "./RecipeItem";
+import SavedRecipeItem from "./Item";
 import Recipe from "../../../utils/Recipe";
 import User from "../../../utils/UserController";
 import Spinner from "../../common/Spinner";
