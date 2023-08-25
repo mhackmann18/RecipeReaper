@@ -103,11 +103,11 @@ input.no-spinner-wheel {
   background-color: var(--outer-space);
 }
 
-button.inactive {
+button:disabled {
   opacity: 70%;
 }
 
-button.inactive:hover {
+button:disabled:hover {
   background-color: var(--eerie-black);
   cursor: default;
 }

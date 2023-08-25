@@ -78,6 +78,8 @@ export default function RecipeItemButtons({ buttonSettings }) {
         // eslint-disable-next-line prettier/prettier
         className={`btn-default${saveChanges.variant ? ` ${saveChanges.variant}` : ""}`}
         onClick={saveChanges.onClick}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...(saveChanges.variant === "inactive" && { disabled: true })}
         key="Save Changes"
       >
         <FontAwesomeIcon
