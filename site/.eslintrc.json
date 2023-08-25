@@ -36,7 +36,8 @@
         "functions": false
       }
     ],
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".test.js", ".jsx"] }]
     // "no-unused-vars": "off"
   }
 }
