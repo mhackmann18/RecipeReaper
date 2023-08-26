@@ -47,6 +47,7 @@ export default function HomeRecipeItem({ recipe, onBackClick }) {
             <SignupForm
               headerElement={<p id="signup-msg">{signupModalMessage}</p>}
               onSubmitSuccess={handleSignupFormSubmitSuccess}
+              formId="recipe-signup-form"
             />
           </div>
         </Fade>

@@ -14,6 +14,7 @@ export default function SignupForm({
   headerText,
   headerElement,
   onSubmitSuccess,
+  formId,
 }) {
   const [usernameInputError, setUsernameInputError] = useState("");
   const [passwordInputError, setPasswordInputError] = useState("");
@@ -116,33 +117,37 @@ export default function SignupForm({
   }
 
   return (
-    <form id="signup-form" className="account-form" onSubmit={handleSubmit}>
+    <form
+      id={formId}
+      className="account-form signup-form"
+      onSubmit={handleSubmit}
+    >
       <h2>{headerText}</h2>
       {headerElement}
-      <label htmlFor="username">Username</label>
+      <label htmlFor={`${formId}-username`}>Username</label>
       <input
         name="username"
-        id="username"
+        id={`${formId}-username`}
         type="text"
         onBlur={handleUsernameInputBlur}
       />
       {usernameInputError && (
         <Alert severity="error">{usernameInputError}</Alert>
       )}
-      <label htmlFor="password">Password</label>
+      <label htmlFor={`${formId}-password`}>Password</label>
       <input
         name="password"
-        id="password"
+        id={`${formId}-password`}
         type="password"
         onBlur={handlePasswordInputBlur}
       />
       {passwordInputError && (
         <Alert severity="error">{passwordInputError}</Alert>
       )}
-      <label htmlFor="confirm-password">Confirm Password</label>
+      <label htmlFor={`${formId}-confirm-password`}>Confirm Password</label>
       <input
         name="confirm-password"
-        id="confirm-password"
+        id={`${formId}-confirm-password`}
         type="password"
         onBlur={handleConfirmPasswordInputBlur}
       />
@@ -153,7 +158,7 @@ export default function SignupForm({
         Sign up
       </button>
       {formSubmitError && (
-        <Alert id="account-form-submit-error" severity="error">
+        <Alert className="account-form-submit-error" severity="error">
           {formSubmitError}
         </Alert>
       )}
@@ -165,6 +170,7 @@ SignupForm.propTypes = {
   headerText: PropTypes.string,
   headerElement: PropTypes.element,
   onSubmitSuccess: PropTypes.func,
+  formId: PropTypes.string.isRequired,
 };
 
 SignupForm.defaultProps = {

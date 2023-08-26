@@ -47,6 +47,6 @@
   font-weight: 500;
 }
 
-#account-form-submit-error {
+.account-form-submit-error {
   margin-top: 16px;
 }

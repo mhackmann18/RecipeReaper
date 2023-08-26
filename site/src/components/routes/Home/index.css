@@ -81,7 +81,7 @@
   padding-bottom: 25vh;
 }
 
-#home-page #signup-form h2 {
+#home-page .signup-form h2 {
   font-size: 1.8rem;
 }
 
@@ -224,12 +224,12 @@
     padding-bottom: 10vh;
   }
 
-  #home-page #signup-form {
+  #home-page .signup-form {
     margin-top: 0;
     width: 100%;
   }
 
-  #home-page #signup-form label {
+  #home-page .signup-form label {
     text-align: left;
   }
 }

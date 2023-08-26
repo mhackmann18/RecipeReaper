@@ -128,6 +128,7 @@ export default function Home() {
             </p>
           }
           onSubmitSuccess={() => navigate("/dashboard")}
+          formId="footer-signup-form"
         />
       </div>
       <Modal id="recipe-modal" open={!!recipe} onClose={() => setRecipe(null)}>

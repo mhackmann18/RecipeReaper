@@ -15,6 +15,7 @@ export default function Signup() {
           </p>
         }
         onSubmitSuccess={() => navigate("/dashboard")}
+        formId="signup-page-signup-form"
       />
     </div>
   );
