@@ -24,8 +24,6 @@ export default function NewRecipeItem() {
     useToast();
   const { user } = useUser();
 
-  console.log(recipe);
-
   const createRecipe = async (recipeData) => {
     const { error, message } = await User.saveRecipe(recipeData, user);
 

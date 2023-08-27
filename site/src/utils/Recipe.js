@@ -108,17 +108,17 @@ export default class Recipe {
   // Compares another Recipe instance for shallow equality (not considering array element ids or recipe id)
   isEquivalent(obj) {
     if (!(obj instanceof Recipe)) {
-      console.log("Instance");
+      // console.log("Instance");
       return false;
     }
     // Title
     if (obj.title !== this.title) {
-      console.log("title");
+      // console.log("title");
       return false;
     }
     // Ingredients
     if (this.ingredients.length !== obj.ingredients.length) {
-      console.log("Ingredients length");
+      // console.log("Ingredients length");
       return false;
     }
     for (let i = 0; i < this.ingredients.length; i++) {
@@ -128,21 +128,21 @@ export default class Recipe {
         this.ingredients[i].unit !== obj.ingredients[i].unit ||
         this.ingredients[i].name !== obj.ingredients[i].name
       ) {
-        console.log(
-          `Ingredient ${this.ingredients[i].name} not equal to ${obj.ingredients[i].name}`
-        );
-        console.log(this.ingredients[i], obj.ingredients[i]);
+        // console.log(
+        //   `Ingredient ${this.ingredients[i].name} not equal to ${obj.ingredients[i].name}`
+        // );
+        // console.log(this.ingredients[i], obj.ingredients[i]);
         return false;
       }
     }
     // Instructions
     if (this.instructions.length !== obj.instructions.length) {
-      console.log("Instructions");
+      // console.log("Instructions");
       return false;
     }
     for (let i = 0; i < this.instructions.length; i++) {
       if (this.instructions[i].text !== obj.instructions[i].text) {
-        console.log("Instructions");
+        // console.log("Instructions");
         return false;
       }
     }
@@ -151,14 +151,14 @@ export default class Recipe {
       (!this.nutrients || !obj.nutrients) &&
       this.nutrients !== obj.nutrients
     ) {
-      console.log(this.nutrients, obj.nutrients);
+      // console.log(this.nutrients, obj.nutrients);
       return false;
     }
     if (this.nutrients && obj.nutrients) {
       if (
         Object.keys(this.nutrients).length !== Object.keys(obj.nutrients).length
       ) {
-        console.log(obj.nutrients, this.nutrients);
+        // console.log(obj.nutrients, this.nutrients);
         return false;
       }
       for (const [name, value] of Object.entries(this.nutrients)) {
@@ -166,14 +166,14 @@ export default class Recipe {
           formatAmount(obj.nutrients[name].quantity, 3) !==
           formatAmount(value.quantity, 3)
         ) {
-          console.log("C");
+          // console.log("C");
           return false;
         }
       }
     }
     // Servings
     if (this.servings !== obj.servings) {
-      console.log("servings");
+      // console.log("servings");
       return false;
     }
     // Serving Size
@@ -181,17 +181,17 @@ export default class Recipe {
       this.servingSize.quantity !== obj.servingSize.quantity ||
       this.servingSize.unit !== obj.servingSize.unit
     ) {
-      console.log("Serving size");
+      // console.log("Serving size");
       return false;
     }
     // Prep Time
     if (this.prepTime !== obj.prepTime) {
-      console.log("Prep time");
+      // console.log("Prep time");
       return false;
     }
     // Cook Time
     if (this.cookTime !== obj.cookTime) {
-      console.log("cook time");
+      // console.log("cook time");
       return false;
     }
     return true;

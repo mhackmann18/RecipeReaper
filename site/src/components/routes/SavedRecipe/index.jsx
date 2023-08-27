@@ -27,7 +27,6 @@ export default function RecipePage({ edit }) {
         redirectOnAuthError(error);
 
         if (data) {
-          console.log(data);
           const { serving_size, prep_time, cook_time, original_url } = data;
           setRecipe(
             new Recipe({

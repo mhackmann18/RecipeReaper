@@ -19,8 +19,6 @@ export default function ImportedRecipeItem({ startRecipe }) {
   const { addErrorToastMessage, addSuccessToastMessage, toast, closeToast } =
     useToast();
 
-  console.log(recipe);
-
   const handleSaveRecipeButtonClick = async () => {
     const { data, message, error } = await User.saveRecipe(recipe, user);
 

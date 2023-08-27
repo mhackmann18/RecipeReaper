@@ -17,8 +17,6 @@ export default function SavedRecipeItem({ startRecipe, startingDisplayType }) {
   const { addErrorToastMessage, toast, closeToast, addSuccessToastMessage } =
     useToast();
 
-  console.log(recipe);
-
   const closeForm = () => {
     if (startingDisplayType === "form") {
       navigate(-1);
