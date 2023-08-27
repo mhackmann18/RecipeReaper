@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Ingredient from "../../../utils/Ingredient";
 
 export default function IngredientsList({ ingredients }) {
   return (
@@ -11,5 +12,5 @@ export default function IngredientsList({ ingredients }) {
 }
 
 IngredientsList.propTypes = {
-  ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.instanceOf(Ingredient)).isRequired,
 };
