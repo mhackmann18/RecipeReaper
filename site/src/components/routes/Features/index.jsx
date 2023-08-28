@@ -13,7 +13,7 @@ import HomeRecipeItem from "./RecipeItem";
 import Recipe from "../../../utils/Recipe";
 import "./index.css";
 
-export default function Home() {
+export default function Features() {
   const [mouseScrollActive, setMouseScrollActive] = useState(true);
   const [recipe, setRecipe] = useState(null);
 

@@ -10,7 +10,7 @@ import Library from "./components/routes/Library";
 import Settings from "./components/routes/Settings";
 import SavedRecipe from "./components/routes/SavedRecipe";
 import Search from "./components/routes/Search";
-import Home from "./components/routes/Home";
+import Features from "./components/routes/Features";
 import Signup from "./components/routes/Signup";
 import Login from "./components/routes/Login";
 import theme from "./theme/theme";
@@ -43,7 +43,7 @@ export default function App() {
                 </CheckAuthBeforeRender>
               }
             >
-              <Route path="" element={<Home />} />
+              <Route path="" element={<Features />} />
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />
             </Route>

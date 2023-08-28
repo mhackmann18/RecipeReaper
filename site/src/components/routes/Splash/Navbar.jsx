@@ -35,7 +35,7 @@ export default function Navbar() {
       </Link>
       <div id="navbar-links" className={mobileMenuVisible ? "" : "hidden"}>
         <Link to="" className={location.pathname === "/" ? "active" : ""}>
-          Home
+          Features
         </Link>
         <Link
           to="signup"
