@@ -1,6 +1,6 @@
 #recipe-item-signup-modal {
   display: flex;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
 
 #recipe-item-signup-modal .signup-form-wrapper {

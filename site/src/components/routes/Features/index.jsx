@@ -97,7 +97,11 @@ export default function Features() {
           formId="footer-signup-form"
         />
       </div>
-      <Modal open={!!recipe} onClose={() => setRecipe(null)}>
+      <Modal
+        className="recipe-popup-modal"
+        open={!!recipe}
+        onClose={() => setRecipe(null)}
+      >
         <Fade in={!!recipe}>
           <div className="modal-box">
             {recipe && (

@@ -75,6 +75,14 @@
   margin-top: 20vh;
 }
 
+.recipe-popup-modal {
+  overflow-y: scroll;
+}
+
+.recipe-popup-modal .modal-box {
+  margin: 1rem auto;
+}
+
 /* Tablets */
 @media screen and (min-width: 480px) {
   .view .the-recipe-reaper {
