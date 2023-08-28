@@ -17,13 +17,13 @@
   margin: 15px 0;
 }
 
-#signup-msg {
+.account-form .signup-msg {
   margin-top: 20px;
   color: var(--slate-gray);
   margin-bottom: 16px;
 }
 
-#signup-msg a,
+.account-form .signup-msg a,
 #login-msg a {
   color: var(--eerie-black);
   text-decoration: underline;

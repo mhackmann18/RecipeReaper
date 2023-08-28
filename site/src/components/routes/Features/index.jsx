@@ -26,7 +26,7 @@ export default function Features() {
       <div className="view">
         <img className="the-recipe-reaper" src={reaper} alt="" />
         <section>
-          <h2 className="title">
+          <h2>
             Harvest recipes from <br />
             across the web
           </h2>
@@ -44,7 +44,7 @@ export default function Features() {
       <div className="view">
         <img className="the-recipe-reaper" src={reaperReading} alt="" />
         <section>
-          <h2 className="title">
+          <h2>
             Start building your <br /> online cookbook
           </h2>
           <p>Save recipes to your personal library.</p>
@@ -67,7 +67,7 @@ export default function Features() {
       <div className="view">
         <img className="the-recipe-reaper" src={reaperCooking} alt="" />
         <section>
-          <h2 className="title">Create and customize</h2>
+          <h2>Create and customize</h2>
           <p>Add a personal touch to classic recipes.</p>
           <ul>
             <li>
@@ -89,7 +89,7 @@ export default function Features() {
         <SignupForm
           headerText="Get started"
           headerElement={
-            <p id="signup-msg">
+            <p className="signup-msg">
               Already have an account? <Link to="/login">Log in</Link>
             </p>
           }
@@ -97,7 +97,7 @@ export default function Features() {
           formId="footer-signup-form"
         />
       </div>
-      <Modal id="recipe-modal" open={!!recipe} onClose={() => setRecipe(null)}>
+      <Modal open={!!recipe} onClose={() => setRecipe(null)}>
         <Fade in={!!recipe}>
           <div className="modal-box">
             {recipe && (

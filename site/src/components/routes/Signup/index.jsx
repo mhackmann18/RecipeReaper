@@ -8,7 +8,7 @@ export default function Signup() {
     <div id="signup-page" className="account-page">
       <SignupForm
         headerElement={
-          <p id="signup-msg">
+          <p className="signup-msg">
             All you need for managing your recipes.
             <br />
             Already have an account? <Link to="/login">Log in</Link>
