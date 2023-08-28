@@ -66,7 +66,7 @@
 
 /* Inline variant */
 
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 1024px) {
   #recipe-scraping-form.inline {
     align-items: flex-start;
   }

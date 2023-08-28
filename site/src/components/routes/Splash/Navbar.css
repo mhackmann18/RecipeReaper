@@ -19,9 +19,11 @@
   font-size: 2rem;
   font-family: 'Oswald', sans-serif;
   color: var(--french-gray-2);
+  font-weight: 600;
 }
 
 #app-logo strong {
+  font-weight: 600;
   color: var(--eerie-black);
 }
 
@@ -85,7 +87,7 @@
 }
 
 /* Large tablets and up */
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 1024px) {
   #navbar {
     padding-left: 10vw;
     padding-right: 10vw;

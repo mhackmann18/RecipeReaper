@@ -33,7 +33,7 @@ export default function Navbar() {
       <Link id="app-logo" to="/">
         <strong>RECIPE</strong>REAPER
       </Link>
-      <div id="navbar-links" className={mobileMenuVisible ? "" : "hidden"}>
+      <menu id="navbar-links" className={mobileMenuVisible ? "" : "hidden"}>
         <Link to="" className={location.pathname === "/" ? "active" : ""}>
           Features
         </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           Log in
         </Link>
-      </div>
+      </menu>
       <button
         id="toggle-nav"
         onClick={() => setMobileMenuVisible(!mobileMenuVisible)}
