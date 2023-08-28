@@ -4,16 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
+// Top nav for un-logged-in users
 export default function Navbar() {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [borderActive, setBorderActive] = useState(false);
   const location = useLocation();
 
+  // Show border when y scroll isn't zero
   const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
+    const scrollYPosition = window.pageYOffset;
+    setBorderActive(Boolean(scrollYPosition !== 0));
   };
 
+  // Ensure that only one scroll event listener is active at any given time
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -22,44 +25,38 @@ export default function Navbar() {
     };
   }, []);
 
-  // Collapse the menu when the route changes
+  // Collapse the mobile hamburger menu when the route changes
   useEffect(() => setMobileMenuVisible(false), [location]);
 
   return (
-    <header id="navbar" className={scrollPosition === 0 ? "" : "border"}>
-      <Link id="navbar-logo" to="">
-        RECIPE<span>REAPER</span>
+    <nav id="navbar" className={borderActive ? "border" : ""}>
+      <Link id="app-logo" to="/">
+        <strong>RECIPE</strong>REAPER
       </Link>
-      <ul className={mobileMenuVisible ? "" : "hide"}>
-        <li>
-          <Link to="" className={location.pathname === "/" ? "active" : ""}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="signup"
-            className={location.pathname === "/signup" ? "active" : ""}
-          >
-            Sign up
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="login"
-            className={location.pathname === "/login" ? "active" : ""}
-          >
-            Log in
-          </Link>
-        </li>
-      </ul>
-      <FontAwesomeIcon
-        id="navbar-menu-icon"
-        icon={faBars}
-        className="viewport-small"
-        size="xl"
+      <div id="navbar-links" className={mobileMenuVisible ? "" : "hidden"}>
+        <Link to="" className={location.pathname === "/" ? "active" : ""}>
+          Home
+        </Link>
+        <Link
+          to="signup"
+          className={location.pathname === "/signup" ? "active" : ""}
+        >
+          Sign up
+        </Link>
+        <Link
+          to="login"
+          className={location.pathname === "/login" ? "active" : ""}
+        >
+          Log in
+        </Link>
+      </div>
+      <button
+        id="toggle-nav"
         onClick={() => setMobileMenuVisible(!mobileMenuVisible)}
-      />
-    </header>
+        type="button"
+      >
+        <FontAwesomeIcon icon={faBars} className="viewport-small" size="xl" />
+      </button>
+    </nav>
   );
 }
