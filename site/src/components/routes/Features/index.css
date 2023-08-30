@@ -77,10 +77,13 @@
 
 .recipe-popup-modal {
   overflow-y: scroll;
+  display: flex;
+  padding: 1.5rem 0;
 }
 
 .recipe-popup-modal .modal-box {
-  margin: 1rem auto;
+  margin: auto;
+  width: min(100%, 60rem);
 }
 
 /* Tablets */

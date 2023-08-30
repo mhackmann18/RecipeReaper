@@ -1,6 +1,7 @@
 #recipe-item-signup-modal {
   display: flex;
   /* padding: 1rem 0; */
+  max-width: 800px;
 }
 
 #recipe-item-signup-modal .signup-form-wrapper {
