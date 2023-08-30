@@ -1,10 +1,9 @@
 .account-form {
-  width: 90%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  padding-bottom: 10px;
   margin: auto;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .account-form h2 {

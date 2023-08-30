@@ -1,7 +1,10 @@
 #recipe-item-signup-modal {
   display: flex;
   /* padding: 1rem 0; */
-  max-width: 800px;
+}
+
+#recipe-item-signup-modal .account-form {
+  width: 100%;
 }
 
 #recipe-item-signup-modal .signup-form-wrapper {
@@ -10,8 +13,9 @@
   width: 440px;
   display: flex;
   justify-content: center;
-  padding: max(1.5vw, 3vh);
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: .7rem;
+  /* padding: max(1.5vw, 3vh); */
   height: fit-content;
 }
 
@@ -19,6 +23,13 @@
   margin-top: 0;
   padding-bottom: 0;
   width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  #recipe-item-signup-modal .signup-form-wrapper {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
 }
 
 @media screen and (max-width: 480px) {

@@ -10,3 +10,8 @@
 .signup-msg {
   text-align: center;
 }
+
+.account-page form {
+  padding: .5rem;
+  width: 100%;
+}
