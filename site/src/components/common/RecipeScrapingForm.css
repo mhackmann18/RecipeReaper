@@ -53,9 +53,7 @@
 }
 
 #rsf-input-error, #rsf-submit-error {
-  margin-top: .5rem;
-  width: 100%;
-  max-width: 480px;
+  margin-top: .5rem
 }
 
 #recipe-scraping-form .spinner-wrapper {
