@@ -58,7 +58,7 @@ export async function checkPasswordInput(password) {
     )
   ) {
     msg =
-      "Password must contain at least one letter, one number and one special character";
+      "Password must contain at least one letter, one number, and one special character";
   } else {
     isValid = true;
   }
