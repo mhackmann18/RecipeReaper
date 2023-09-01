@@ -13,7 +13,7 @@ pipeline {
     stage('Logging into AWS ECR...') {
       steps {
         script { 
-          sh "docker login --username AWS --password $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION} --profile ${AWS_CLI_PROFILE_NAME}) ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+          sh "docker login --username AWS --password \$(aws ecr get-login-password --region ${AWS_DEFAULT_REGION} --profile ${AWS_CLI_PROFILE_NAME}) ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
         }
       }
     }
