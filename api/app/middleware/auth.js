@@ -20,7 +20,8 @@ const verifyToken = (checkPrivilegesFn) => (req, res, next) => {
 
     const user = jwt.verify(
       cookies.access_token,
-      fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8")
+      process.env.JWT_SECRET ||
+        fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8")
     );
     req.user = user;
 

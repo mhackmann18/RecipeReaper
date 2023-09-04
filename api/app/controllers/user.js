@@ -5,7 +5,9 @@ const fs = require("fs");
 const utils = require("../utilities/utils");
 const User = require("../models/User");
 
-const JWT_SECRET = fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8");
+const JWT_SECRET =
+  process.env.JWT_SECRET ||
+  fs.readFileSync(process.env.JWT_SECRET_FILE, "utf-8");
 const { requestWrapper } = utils;
 
 const setCookieOptions = {
