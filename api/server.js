@@ -37,7 +37,7 @@ require("./app/routes/user")(app);
 
 const { PORT, NODE_ENV } = process.env;
 
-const MAX_RETRY_ATTEMPTS = 5;
+const MAX_RETRY_ATTEMPTS = 15;
 const RETRY_INTERVAL = 5000;
 
 if (NODE_ENV === "production") {

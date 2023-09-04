@@ -3,6 +3,7 @@ const fs = require("fs");
 
 // Create a connection to the database
 module.exports = async function () {
+  console.log(process.env.MYSQL_PASSWORD, process.env.MYSQL_USER);
   const conn = await mysql.createConnection({
     host: process.env.MYSQL_HOST,
     // port: process.env.MYSQL_PORT,
