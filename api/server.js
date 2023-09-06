@@ -42,41 +42,28 @@ const RETRY_INTERVAL = 5000;
 
 if (NODE_ENV === "production") {
   const options = {
-    key: fs.readFileSync("/etc/pki/tls/private/rrapi-tls.key"),
-    cert: fs.readFileSync("/etc/pki/tls/certs/api_recipereaper_com.crt"),
+    key: fs.readFileSync("./key.pem"),
+    cert: fs.readFileSync("/cert.pem"),
   };
 
-  // Connect to db and init
+  const server = https.createServer(options, app);
 
-  init().then(() =>
-    https.createServer(options, app).listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}.`);
-    })
-  );
+  // Connect to db and init
+  connectToDBWithRetry(MAX_RETRY_ATTEMPTS, RETRY_INTERVAL, server);
 }
 
 if (NODE_ENV === "development") {
-  // try {
-  //   init().then(() => {
-  //     app.listen(PORT, () => {
-  //       console.log(`Server is running on port ${PORT}.`);
-  //     });
-  //   });
-  // } catch (err) {
-  //   console.log(err.red);
-  // }
-  // eslint-disable-next-line no-use-before-define
-  connectToDBWithRetry(MAX_RETRY_ATTEMPTS, RETRY_INTERVAL);
+  connectToDBWithRetry(MAX_RETRY_ATTEMPTS, RETRY_INTERVAL, app);
 }
 
-async function connectToDBWithRetry(maxAttempts, interval) {
+async function connectToDBWithRetry(maxAttempts, interval, server) {
   let retryCount = 0;
 
   async function tryConnect() {
     try {
       await init();
       console.log("Database connected successfully!");
-      app.listen(PORT, () => {
+      server.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}.`);
       });
     } catch (err) {

@@ -28,6 +28,7 @@ config.env
 
 __pycache__/
 .venv
+*.pem
 
 # Secrets used in docker compose
 jwt_secret.txt
