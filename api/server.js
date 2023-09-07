@@ -40,6 +40,9 @@ const { PORT, NODE_ENV } = process.env;
 const MAX_RETRY_ATTEMPTS = 15;
 const RETRY_INTERVAL = 5000;
 
+console.log(process.env.SSL_PRIVATE_KEY);
+console.log(process.env.SSL_CERTIFICATE);
+
 if (NODE_ENV === "production") {
   const options = {
     // key: fs.readFileSync("./key.pem"),
