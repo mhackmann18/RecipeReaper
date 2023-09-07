@@ -53,7 +53,6 @@ services:
       - db_password
     depends_on:
       - db
-    # command: ["./wait-for-it.sh", "db:3306", "--strict", "--", "npm", "start"]
 
   site:
     image: recipereaper-site
