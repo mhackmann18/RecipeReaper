@@ -42,8 +42,13 @@ const RETRY_INTERVAL = 5000;
 
 if (NODE_ENV === "production") {
   const options = {
+<<<<<<< HEAD
     key: fs.readFileSync(SSL_KEY_FILE),
     cert: fs.readFileSync(SSL_CERT_FILE)
+=======
+    key: fs.readFileSync("./key.pem"),
+    cert: fs.readFileSync("./cert.pem"),
+>>>>>>> dc92601859b28bb7ec1158b34ddc1f0b4470213f
   };
 
   const server = https.createServer(options, app);
