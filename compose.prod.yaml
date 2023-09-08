@@ -21,14 +21,14 @@ services:
       context: ./scraper
       dockerfile: Dockerfile.dev
     ports:
-      - 127.0.0.1:8000:8000
+      - 8000:8000
     networks:
       - recipereaper
 
   api:
     image: recipereaper-api
     ports:
-      - 127.0.0.1:8080:8080
+      - 8080:8080
     volumes:
       - ./api/app:/app/app
     networks:
