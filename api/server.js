@@ -46,7 +46,7 @@ console.log(process.env.KILL_ALL);
 if (NODE_ENV === "production") {
   const options = {
     key: fs.readFileSync("./key.pem"),
-    cert: fs.readFileSync("./cert.pem")
+    cert: fs.readFileSync("./cert.pem"),
   };
   console.log(options);
 
