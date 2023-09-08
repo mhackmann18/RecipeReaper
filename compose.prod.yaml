@@ -45,7 +45,6 @@ services:
       MYSQL_HOST: db
       MYSQL_PORT: 3306
       MYSQL_USER: root
-      MYSQL_PASSWORD: ds89mg31
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
       MYSQL_DB: recipes
       ADMIN_USERNAME: god_of_prepmaster
