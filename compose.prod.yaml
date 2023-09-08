@@ -68,8 +68,8 @@ services:
       dockerfile: Dockerfile.dev
     environment:
       REACT_APP_DOMAIN: recipereaper.com
-      REACT_APP_API_ORIGIN: 127.0.0.1:8080
-      REACT_APP_SCRAPER_ORIGIN: 127.0.0.1:8000
+      REACT_APP_API_ORIGIN: http://recipereaper.com:8080
+      REACT_APP_SCRAPER_ORIGIN: http://recipereaper.com:8000
 
 networks:
   recipereaper:
