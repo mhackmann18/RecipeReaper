@@ -55,6 +55,8 @@ services:
     secrets:
       - jwt_secret
       - db_password
+      - ssl_key
+      - ssl_cert
     depends_on:
       - db
 

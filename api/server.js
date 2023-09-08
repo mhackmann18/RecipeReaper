@@ -35,20 +35,16 @@ app.get("/", (req, res) => {
 require("./app/routes/recipe")(app);
 require("./app/routes/user")(app);
 
-const { PORT, NODE_ENV } = process.env;
+const { PORT, NODE_ENV, SSL_KEY_FILE, SSL_CERT_FILE } = process.env;
 
 const MAX_RETRY_ATTEMPTS = 15;
 const RETRY_INTERVAL = 5000;
 
-console.log(process.env.KILL);
-console.log(process.env.KILL_ALL);
-
 if (NODE_ENV === "production") {
   const options = {
-    key: fs.readFileSync("./key.pem"),
-    cert: fs.readFileSync("./cert.pem")
+    key: fs.readFileSync(SSL_KEY_FILE),
+    cert: fs.readFileSync(SSL_CERT_FILE)
   };
-  console.log(options);
 
   const server = https.createServer(options, app);
 
