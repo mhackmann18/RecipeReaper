@@ -38,16 +38,20 @@ services:
       dockerfile: Dockerfile.dev
     environment:
       PORT: 8080
-      CORS_ORIGIN: http://recipereaper.com
+      CORS_ORIGIN: 'https://www.recipereaper.com'
+      KILL: site
+      KILL_ALL: scraper
       JWT_SECRET_FILE: /run/secrets/jwt_secret
       ACCESS_TOKEN_EXPIRES_IN: 3600
-      NODE_ENV: development
+      NODE_ENV: production
       MYSQL_HOST: db
       MYSQL_PORT: 3306
       MYSQL_USER: root
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
       MYSQL_DB: recipes
       ADMIN_USERNAME: god_of_prepmaster
+      SSL_KEY_FILE: /run/secrets/ssl_key
+      SSL_CERT_FILE: /run/secrets/ssl_cert
     secrets:
       - jwt_secret
       - db_password
@@ -67,8 +71,8 @@ services:
       dockerfile: Dockerfile.dev
     environment:
       REACT_APP_DOMAIN: recipereaper.com
-      REACT_APP_API_ORIGIN: http://recipereaper.com:8080
-      REACT_APP_SCRAPER_ORIGIN: http://recipereaper.com:8000
+      REACT_APP_API_ORIGIN: https://www.recipereaper.com:8080
+      REACT_APP_SCRAPER_ORIGIN: https://www.recipereaper.com:8000
 
 networks:
   recipereaper:
@@ -78,6 +82,10 @@ secrets:
     file: db_password.txt
   jwt_secret:
     file: jwt_secret.txt
+  ssl_key:
+    file: /etc/pki/tls/private/custom.key
+  ssl_cert:
+    file: /etc/pki/tls/private/cert.crt
 
 volumes:
   recipereaper-data:

@@ -3,7 +3,7 @@ require("colors");
 const express = require("express");
 const cors = require("cors");
 const https = require("https");
-// const fs = require("fs");
+const fs = require("fs");
 const init = require("./app/utilities/init");
 const logRequest = require("./app/middleware/logRequest");
 
@@ -40,16 +40,15 @@ const { PORT, NODE_ENV } = process.env;
 const MAX_RETRY_ATTEMPTS = 15;
 const RETRY_INTERVAL = 5000;
 
-console.log(process.env.SSL_PRIVATE_KEY);
-console.log(process.env.SSL_CERTIFICATE);
+console.log(process.env.KILL);
+console.log(process.env.KILL_ALL);
 
 if (NODE_ENV === "production") {
   const options = {
-    // key: fs.readFileSync("./key.pem"),
-    key: process.env.SSL_PRIVATE_KEY,
-    // cert: fs.readFileSync("/cert.pem"),
-    cert: process.env.SSL_CERTIFICATE,
+    key: fs.readFileSync("./key.pem"),
+    cert: fs.readFileSync("./cert.pem")
   };
+  console.log(options);
 
   const server = https.createServer(options, app);
 
