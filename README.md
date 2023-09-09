@@ -22,10 +22,10 @@ echo 'my-32-character-ultra-secure-and-ultra-long-secret' >jwt_secret.txt
 ```
 Build Docker images
 ```bash
-docker compose build
+docker compose -f compose.dev.yaml build
 ```
 Run the app
 ```bash
-docker compose up -d
+docker compose -f compose.dev.yaml up -d
 ```
 Open your browser and visit http://localhost:3000. The app should be up and running.
