@@ -39,8 +39,6 @@ services:
     environment:
       PORT: 8080
       CORS_ORIGIN: 'https://www.recipereaper.com'
-      KILL: site
-      KILL_ALL: scraper
       JWT_SECRET_FILE: /run/secrets/jwt_secret
       ACCESS_TOKEN_EXPIRES_IN: 3600
       NODE_ENV: production
