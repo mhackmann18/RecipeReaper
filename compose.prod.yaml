@@ -19,7 +19,7 @@ services:
     image: recipereaper-scraper
     build:
       context: ./scraper
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     ports:
       - 8000:8000
     networks:
