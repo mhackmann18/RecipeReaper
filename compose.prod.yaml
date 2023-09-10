@@ -35,7 +35,7 @@ services:
       - recipereaper
     build: 
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     environment:
       PORT: 8080
       CORS_ORIGIN: 'https://www.recipereaper.com'
