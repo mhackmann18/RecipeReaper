@@ -13,9 +13,6 @@ RUN npm install --omit=dev
 # Copy the rest of the application code to container
 COPY . .
 
-# Expose port that app runs on 
-# EXPOSE 3000
-
 # Start the app in dev mode
 RUN npm run build
 
@@ -23,6 +20,8 @@ RUN npm run build
 FROM nginx:stable-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
