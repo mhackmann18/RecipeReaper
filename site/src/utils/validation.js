@@ -53,12 +53,12 @@ export async function checkPasswordInput(password) {
     msg = "Password must be no more than 128 characters in length";
     // Regex from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
   } else if (
-    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,128}$/.test(
+    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&-])[A-Za-z\d@$!%*#?&-]{8,128}$/.test(
       password
     )
   ) {
     msg =
-      "Password must contain at least one letter, one number, and one special character";
+      "Password must contain at least one letter, one number, and one special character (@, $, !, %, *, #, ?, &, -)";
   } else {
     isValid = true;
   }
