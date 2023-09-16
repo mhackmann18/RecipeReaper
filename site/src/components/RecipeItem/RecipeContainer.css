@@ -142,6 +142,11 @@ form .nutrients-container {
   font-size: .8rem;
 }
 
+.recipe-container .original-recipe a {
+  color: var(--french-gray-2);
+  font-weight: 600;
+}
+
 @media screen and (max-width: 480px) {
   #recipe-content {
     background-color: var(--white);

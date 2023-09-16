@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import getHostFromUrl from "../../utils/getHostFromUrl";
 import "./RecipeContainer.css";
 
 export default function RecipeContainer({
@@ -48,7 +50,10 @@ export default function RecipeContainer({
       </div>
       {originalRecipeUrl && (
         <p className="original-recipe">
-          Original recipe from {originalRecipeUrl}
+          Original recipe from{" "}
+          <Link to={originalRecipeUrl} target="_blank">
+            {getHostFromUrl(originalRecipeUrl)}
+          </Link>
         </p>
       )}
     </div>
