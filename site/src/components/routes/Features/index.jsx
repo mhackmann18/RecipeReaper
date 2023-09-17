@@ -10,14 +10,19 @@ import reaperCooking from "../../../assets/reaper-cooking.png";
 import SignupForm from "../Signup/Form";
 import HomeRecipeItem from "./RecipeItem";
 import Recipe from "../../../utils/Recipe";
+import LoadingRecipeItem from "./LoadingRecipeItem";
 import "./index.css";
 
 export default function Features() {
   const [recipe, setRecipe] = useState(null);
+  const [loadingRecipe, setLoadingRecipe] = useState(false);
+
+  const modalOpen = !!(loadingRecipe || recipe);
 
   const navigate = useNavigate();
 
-  const handleRSFSubmit = (data) => {
+  const handleRSFResponse = (data) => {
+    setLoadingRecipe(false);
     setRecipe(new Recipe({ ...data }));
   };
 
@@ -37,7 +42,9 @@ export default function Features() {
           </p>
           <RecipeScrapingForm
             variant="inline"
-            handleResponse={handleRSFSubmit}
+            onSubmit={() => setLoadingRecipe(true)}
+            handleResponse={handleRSFResponse} // Rename to onSuccess
+            onFailure={() => setLoadingRecipe(false)}
           />
         </section>
       </div>
@@ -99,16 +106,18 @@ export default function Features() {
       </div>
       <Modal
         className="recipe-popup-modal"
-        open={!!recipe}
+        open={modalOpen}
         onClose={() => setRecipe(null)}
       >
-        <Fade in={!!recipe}>
+        <Fade in={modalOpen}>
           <div className="modal-box">
-            {recipe && (
+            {recipe ? (
               <HomeRecipeItem
                 recipe={recipe}
                 onBackClick={() => setRecipe(null)}
               />
+            ) : (
+              <LoadingRecipeItem />
             )}
           </div>
         </Fade>

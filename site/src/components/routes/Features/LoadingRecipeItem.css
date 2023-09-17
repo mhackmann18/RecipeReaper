@@ -1,0 +1,44 @@
+.loading-recipe-item .left {
+  width: min(440px, 100%);
+}
+
+.loading-recipe-item .right {
+  width: min(300px, 100%);
+  display: flex;
+}
+
+.loading-recipe-title {
+  height: 1.9rem;
+  margin-bottom: .8rem;
+}
+
+.loading-recipe-buttons {
+  height: 3rem;
+  margin: auto 0;
+}
+
+.loading-recipe-item .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loading-recipe-ingredients {
+  height: max(300px, 50vh);
+}
+
+.loading-recipe-instructions {
+  height: max(180px, 30vh);
+  margin-bottom: 1rem;
+}
+
+.loading-recipe-nutrients {
+  height: max(100px, 16.7vh);
+}
+
+.loading-recipe-url {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}
