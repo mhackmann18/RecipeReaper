@@ -25,25 +25,25 @@ def get_recipe_data():
     # Check that client provided a url parameter
     if url == '':
         print('Client failed to provide a url parameter')
-        return 'Please provide a url parameter'
+        return 'Please provide a url parameter', 400
 
     # Check for invalid urls
     if not validators.url(url):
         print('Client provided an invalid url')
-        return 'Please provide a valid url'
+        return 'Please provide a valid url', 400
 
     try:
         # Recipe scraping library courtesy of: https://github.com/hhursev/recipe-scrapers
         scraper = scrape_me(url, wild_mode=True)
     except requests.exceptions.MissingSchema:
         print('Invalid url')
-        return 'Please provide a valid url'
+        return 'Please provide a valid url', 400
     except recipe_scrapers._exceptions.NoSchemaFoundInWildMode:  
         print('Failed to scrape the provided url')
-        return 'Unable to obtain recipe data from the provided url. Please try a different url'
+        return 'Unable to obtain recipe data from the provided url. Please try a different url', 400
     except Exception as ex:
         print(type(ex))
-        return 'An unexpected error occurred'
+        return 'An unexpected error occurred', 500
 
     # Successful request
     print('Successful request')
