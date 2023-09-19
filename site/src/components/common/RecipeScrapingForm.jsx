@@ -9,8 +9,9 @@ export default function RecipeScrapingForm({
   handleResponse,
   onFailure,
   variant,
+  errorMessage,
 }) {
-  const [submitError, setSubmitError] = useState("");
+  const [submitError, setSubmitError] = useState(errorMessage);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,8 +24,8 @@ export default function RecipeScrapingForm({
     const recipe = await getRecipeFromUrl(urlInput);
 
     if (typeof recipe === "string") {
+      onFailure(recipe);
       setSubmitError(recipe);
-      onFailure();
     } else {
       handleResponse(recipe);
     }
@@ -59,10 +60,12 @@ RecipeScrapingForm.propTypes = {
   variant: PropTypes.string,
   onSubmit: PropTypes.func,
   onFailure: PropTypes.func,
+  errorMessage: PropTypes.string,
 };
 
 RecipeScrapingForm.defaultProps = {
   variant: "",
   onSubmit: () => false,
   onFailure: () => false,
+  errorMessage: "",
 };

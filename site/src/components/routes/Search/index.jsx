@@ -1,11 +1,12 @@
-import { useLocation, Navigate } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+// import PropTypes from "prop-types";
 import ImportedRecipeItem from "./RecipeItem";
+import LoadingRecipeItem from "../Features/LoadingRecipeItem";
 import Recipe from "../../../utils/Recipe";
 import "../Import.css";
 import "./index.css";
 
-export default function ImportedRecipe({ redirectTo }) {
+export default function ImportedRecipe() {
   const { state } = useLocation();
 
   return (
@@ -13,12 +14,13 @@ export default function ImportedRecipe({ redirectTo }) {
       {state && state.data ? (
         <ImportedRecipeItem startRecipe={new Recipe(state.data)} />
       ) : (
-        <Navigate to={redirectTo} />
+        <LoadingRecipeItem />
+        // <Navigate to={redirectTo} />
       )}
     </div>
   );
 }
 
-ImportedRecipe.propTypes = {
-  redirectTo: PropTypes.string.isRequired,
-};
+// ImportedRecipe.propTypes = {
+//   redirectTo: PropTypes.string.isRequired,
+// };

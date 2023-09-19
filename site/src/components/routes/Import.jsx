@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import RecipeScrapingForm from "../common/RecipeScrapingForm";
 import reaper from "../../assets/reaper.png";
+import LoadingRecipeItem from "./Features/LoadingRecipeItem";
 import "./Import.css";
 
 export default function Import() {
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (res) =>
@@ -11,10 +15,24 @@ export default function Import() {
 
   return (
     <div id="import-page">
-      <div className="center-content">
-        <img className="mascot" src={reaper} alt="reaper" />
-      </div>
-      <RecipeScrapingForm handleResponse={handleSubmit} />
+      {loading ? (
+        <LoadingRecipeItem />
+      ) : (
+        <>
+          <div className="center-content">
+            <img className="mascot" src={reaper} alt="reaper" />
+          </div>
+          <RecipeScrapingForm
+            onSubmit={() => setLoading(true)}
+            handleResponse={handleSubmit}
+            onFailure={(error) => {
+              setLoading(false);
+              setErrorMessage(error);
+            }}
+            errorMessage={errorMessage}
+          />
+        </>
+      )}
     </div>
   );
 }

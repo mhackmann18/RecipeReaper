@@ -115,7 +115,7 @@ export default function RecipeItemButtons({ buttonSettings }) {
 }
 
 const button = PropTypes.exact({
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   variant: PropTypes.string,
 });
 
