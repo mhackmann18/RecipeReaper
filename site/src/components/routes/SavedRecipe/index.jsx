@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 import SavedRecipeItem from "./Item";
 import Recipe from "../../../utils/Recipe";
 import User from "../../../utils/UserController";
-import Spinner from "../../common/Spinner";
+// import Spinner from "../../common/Spinner";
 import useToast from "../../../hooks/useToast";
 import Toast from "../../common/Toast";
 import NoContentMessage from "../../common/NoContentMessage";
 import useRedirectOnAuthError from "../../../hooks/useRedirectOnAuthError";
+// import LoadingRecipeItem from "../Features/LoadingRecipeItem";
 import "./index.css";
 
 export default function RecipePage({ edit }) {
@@ -62,15 +63,7 @@ export default function RecipePage({ edit }) {
 
   return (
     <>
-      <div id="recipe-page">
-        {isLoading ? (
-          <div className="spinner-wrapper">
-            <Spinner />
-          </div>
-        ) : (
-          content
-        )}
-      </div>
+      <div id="recipe-page">{isLoading ? false : content}</div>
       <Toast state={toast} onClose={closeToast} />
     </>
   );

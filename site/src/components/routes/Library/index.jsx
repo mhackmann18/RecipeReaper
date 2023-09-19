@@ -4,7 +4,7 @@ import Recipe from "../../../utils/Recipe";
 import User from "../../../utils/UserController";
 import Toast from "../../common/Toast";
 import useToast from "../../../hooks/useToast";
-import Spinner from "../../common/Spinner";
+// import Spinner from "../../common/Spinner";
 import NoContentMessage from "../../common/NoContentMessage";
 import useRedirectOnAuthError from "../../../hooks/useRedirectOnAuthError";
 import "./index.css";
@@ -95,15 +95,7 @@ export default function Library() {
 
   return (
     <>
-      <div id="library-page">
-        {isLoading ? (
-          <div className="center-content">
-            <Spinner />
-          </div>
-        ) : (
-          content
-        )}
-      </div>
+      <div id="library-page">{isLoading ? false : content}</div>
       <Toast state={toast} onClose={closeToast} />
     </>
   );
