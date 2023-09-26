@@ -33,11 +33,11 @@ export default function RecipeScrapingForm({
 
   return (
     <form id="recipe-scraping-form" className={variant} onSubmit={handleSubmit}>
-      <label htmlFor="url-input" hidden />
+      <label htmlFor="recipe-url" hidden />
       <TextField
-        id="url-input"
-        name="url"
-        autoComplete="off"
+        id="recipe-url"
+        name="recipe-url"
+        // autoComplete="off"
         placeholder="Paste a recipe's URL"
         variant="outlined"
         size="small"

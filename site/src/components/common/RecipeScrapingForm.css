@@ -25,7 +25,7 @@
   color: var(--french-gray-2);
 }
 
-#url-input-helper-text {
+#recipe-url-helper-text {
   text-align: center;
   margin-right: 0;
 }
@@ -47,7 +47,7 @@
     align-items: flex-start;
   }
 
-  #recipe-scraping-form.inline #url-input-helper-text {
+  #recipe-scraping-form.inline #recipe-url-helper-text {
     padding-left: .8rem;
     text-align: left;
   }
