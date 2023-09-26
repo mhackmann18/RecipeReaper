@@ -1,30 +1,22 @@
 #recipe-scraping-form {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
 }
 
-#recipe-scraping-form .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+#recipe-scraping-form .MuiTextField-root {
+  max-width: 480px;
+}
+
+#recipe-scraping-form .MuiInputBase-root {
+  border-radius: 8px;
 }
 
 #recipe-scraping-form input {
-  width: 100%;
-  max-width: 480px;
-  padding: .8rem;
   font-size: 1.1rem;
+  padding: .8rem;
   color: var(--onyx);
-  border: 2px solid var(--french-gray-2);
-  border-radius: .75rem;
-}
-
-#recipe-scraping-form input:hover {
-  outline: 1px solid var(--slate-gray);
-  border: 2px solid var(--slate-gray);
 }
 
 #recipe-scraping-form input::placeholder {
@@ -33,44 +25,31 @@
   color: var(--french-gray-2);
 }
 
-#recipe-scraping-form input:focus {
-  outline: 1px solid var(--slate-gray);
-  border: 2px solid var(--slate-gray);
+#url-input-helper-text {
+  text-align: center;
+  margin-right: 0;
 }
 
 #recipe-scraping-form button {
-  margin-top: .8rem;
   font-size: 1.1rem;
   font-weight: 500;
   padding: .9rem 1.1rem;
-  border-radius: .75rem;
-}
-
-#rsf-spinner {
-  width: 50px;
-  height: 50px;
-  margin-top: 20px;
-}
-
-#rsf-input-error, #rsf-submit-error {
-  margin-top: .5rem
-}
-
-#recipe-scraping-form .spinner-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  margin-top: .5rem;
+  border-radius: 8px;
+  white-space: nowrap;
 }
 
 /* Inline variant */
 
 @media screen and (min-width: 1024px) {
   #recipe-scraping-form.inline {
+    flex-direction: row;
     align-items: flex-start;
   }
 
-  #recipe-scraping-form.inline .main {
-    flex-direction: row;
+  #recipe-scraping-form.inline #url-input-helper-text {
+    padding-left: .8rem;
+    text-align: left;
   }
 
   #recipe-scraping-form.inline button  {

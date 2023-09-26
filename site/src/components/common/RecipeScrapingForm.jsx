@@ -1,17 +1,17 @@
 import { useState } from "react";
+import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
-import Alert from "@mui/material/Alert";
 import getRecipeFromUrl from "../../utils/getRecipeFromUrl";
 import "./RecipeScrapingForm.css";
 
 export default function RecipeScrapingForm({
   onSubmit,
-  handleResponse,
+  onSuccess,
   onFailure,
-  variant,
-  errorMessage,
+  variant, // Optional, allowed values = "inline"
+  startingErrorMessage,
 }) {
-  const [submitError, setSubmitError] = useState(errorMessage);
+  const [submitError, setSubmitError] = useState(startingErrorMessage);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -27,45 +27,44 @@ export default function RecipeScrapingForm({
       onFailure(recipe);
       setSubmitError(recipe);
     } else {
-      handleResponse(recipe);
+      onSuccess(recipe);
     }
   }
 
   return (
     <form id="recipe-scraping-form" className={variant} onSubmit={handleSubmit}>
-      <div className="main">
-        <input
-          type="text"
-          id="url-input"
-          placeholder="Paste a recipe's URL"
-          onFocus={() => {
-            setSubmitError("");
-          }}
-        />
+      <label htmlFor="url-input" hidden />
+      <TextField
+        id="url-input"
+        name="url"
+        autoComplete="off"
+        placeholder="Paste a recipe's URL"
+        variant="outlined"
+        size="small"
+        fullWidth
+        error={Boolean(submitError)}
+        helperText={submitError}
+      />
+      <div className="button-wrapper">
         <button className="btn-default" type="submit">
           Get Recipe
         </button>
       </div>
-      {submitError && (
-        <Alert id="rsf-submit-error" severity="error">
-          {submitError}
-        </Alert>
-      )}{" "}
     </form>
   );
 }
 
 RecipeScrapingForm.propTypes = {
-  handleResponse: PropTypes.func.isRequired,
-  variant: PropTypes.string,
   onSubmit: PropTypes.func,
+  onSuccess: PropTypes.func.isRequired,
   onFailure: PropTypes.func,
-  errorMessage: PropTypes.string,
+  variant: PropTypes.string,
+  startingErrorMessage: PropTypes.string,
 };
 
 RecipeScrapingForm.defaultProps = {
-  variant: "",
   onSubmit: () => false,
   onFailure: () => false,
-  errorMessage: "",
+  variant: "",
+  startingErrorMessage: "",
 };

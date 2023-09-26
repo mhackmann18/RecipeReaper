@@ -43,7 +43,7 @@ export default function Features() {
           <RecipeScrapingForm
             variant="inline"
             onSubmit={() => setLoadingRecipe(true)}
-            handleResponse={handleRSFResponse} // Rename to onSuccess
+            onSuccess={handleRSFResponse}
             onFailure={() => setLoadingRecipe(false)}
           />
         </section>

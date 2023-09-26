@@ -24,7 +24,7 @@ export default function Import() {
           </div>
           <RecipeScrapingForm
             onSubmit={() => setLoading(true)}
-            handleResponse={handleSubmit}
+            onSuccess={handleSubmit}
             onFailure={(error) => {
               setLoading(false);
               setErrorMessage(error);
