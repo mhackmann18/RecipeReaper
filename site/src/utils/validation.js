@@ -20,9 +20,13 @@ export function isValidHttpURL(string) {
   try {
     url = new URL(string);
   } catch (_) {
-    return false;
+    return "Please enter a valid URL";
   }
-  return url.protocol === "http:" || url.protocol === "https:";
+  return (
+    url.protocol === "http:" ||
+    url.protocol === "https:" ||
+    "Please enter a valid URL"
+  );
 }
 
 export function checkUsernameInput(username) {

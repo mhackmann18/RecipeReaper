@@ -37,7 +37,8 @@
       }
     ],
     "no-plusplus": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".test.js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".test.js", ".jsx"] }],
+    "react/jsx-props-no-spreading": "off"
     // "no-unused-vars": "off"
   }
 }

@@ -1,13 +1,8 @@
 /* eslint-disable camelcase */
-import { isValidHttpURL } from "./validation";
 import Recipe from "./Recipe";
 
 // Return Recipe or error string
 export default async function getRecipeFromUrl(url) {
-  if (!isValidHttpURL(url)) {
-    return "Please paste a valid recipe URL";
-  }
-
   let response;
 
   try {

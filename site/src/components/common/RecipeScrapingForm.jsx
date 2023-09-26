@@ -1,27 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import getRecipeFromUrl from "../../utils/getRecipeFromUrl";
+import { isValidHttpURL } from "../../utils/validation";
 import "./RecipeScrapingForm.css";
 
 export default function RecipeScrapingForm({
   onSubmit,
   onSuccess,
   onFailure,
-  variant, // Optional, allowed values = "inline"
+  variant, // Optional property. Allowed values: "inline"
   startingErrorMessage,
 }) {
   const [submitError, setSubmitError] = useState(startingErrorMessage);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setSubmitError("");
-    document.activeElement.blur();
-    const urlInput = e.target.querySelector("input").value;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  useEffect(() => {
+    if (errors?.recipeUrl?.message) {
+      setSubmitError(errors.recipeUrl.message);
+    }
+  }, [errors]);
+
+  async function onFormSubmit({ recipeUrl }) {
+    setSubmitError("");
     onSubmit();
 
-    const recipe = await getRecipeFromUrl(urlInput);
+    const recipe = await getRecipeFromUrl(recipeUrl);
 
     if (typeof recipe === "string") {
       onFailure(recipe);
@@ -32,11 +42,14 @@ export default function RecipeScrapingForm({
   }
 
   return (
-    <form id="recipe-scraping-form" className={variant} onSubmit={handleSubmit}>
+    <form
+      id="recipe-scraping-form"
+      className={variant}
+      onSubmit={handleSubmit(onFormSubmit)}
+    >
       <label htmlFor="recipe-url" hidden />
       <TextField
         id="recipe-url"
-        name="recipe-url"
         // autoComplete="off"
         placeholder="Paste a recipe's URL"
         variant="outlined"
@@ -44,6 +57,9 @@ export default function RecipeScrapingForm({
         fullWidth
         error={Boolean(submitError)}
         helperText={submitError}
+        {...register("recipeUrl", {
+          validate: isValidHttpURL,
+        })}
       />
       <div className="button-wrapper">
         <button className="btn-default" type="submit">
