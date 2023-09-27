@@ -2,7 +2,7 @@
 
 A web app for recipe scraping and management. 
 
-## Setup Dev Environment
+## Setup and Run App in Dev Environment
 
 Make sure that you have Docker Desktop installed and that ports 3000, 8080, 8000, and 3306 are not in use on your local machine.
 
@@ -22,7 +22,7 @@ Create jwt_secret.txt
 ```bash
 echo 'my-32-character-ultra-secure-and-ultra-long-secret' >jwt_secret.txt
 ```
-Build Docker images and run containers
+Build Docker images and run app containers
 ```bash
 docker compose -f compose.dev.yaml up -d
 ```
