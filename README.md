@@ -26,4 +26,4 @@ Build Docker images and run containers
 ```bash
 docker compose -f compose.dev.yaml up -d
 ```
-Open your browser and visit http://localhost:3000 to view the app. The /site/src, /api/app, and /scraper directories have bind mounts into the containers. Changes in these directories will be reflected in the running app without having to rebuild the Docker images. 
+Open your browser and visit http://localhost:3000 to view the app. The /site/src, /api/app, and /scraper directories are mounted into the containers. Changes in these directories will be reflected in the running app without having to rebuild the Docker images. 
