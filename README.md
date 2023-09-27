@@ -4,7 +4,7 @@ A web app for recipe scraping and management.
 
 ## Setup Dev Environment
 
-Make sure you have the latest version of Docker Desktop installed.
+Make sure that you have Docker Desktop installed and that ports 3000, 8080, 8000, and 3306 are not in use on your local machine.
 
 Clone this repository
 ```bash
