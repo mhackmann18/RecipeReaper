@@ -1,8 +1,8 @@
 # RecipeReaper
 
-A web app for recipe scraping and management. 
+A web app for recipe scraping and management - [recipereaper.com](https://www.recipereaper.com)
 
-## Setup and Run App in Dev Environment
+## Setup and Run in Dev Environment
 
 Make sure that you have Docker Desktop installed and that ports 3000, 8080, 8000, and 3306 are not in use on your local machine.
 
