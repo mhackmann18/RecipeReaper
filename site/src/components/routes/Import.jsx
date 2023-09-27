@@ -29,7 +29,7 @@ export default function Import() {
               setLoading(false);
               setErrorMessage(error);
             }}
-            errorMessage={errorMessage}
+            startingErrorMessage={errorMessage}
           />
         </>
       )}

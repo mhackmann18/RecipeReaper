@@ -25,7 +25,7 @@ export default function RecipeScrapingForm({
     if (errors?.recipeUrl?.message) {
       setSubmitError(errors.recipeUrl.message);
     }
-  }, [errors]);
+  }, [errors.recipeUrl]);
 
   async function onFormSubmit({ recipeUrl }) {
     setSubmitError("");
