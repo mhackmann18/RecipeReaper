@@ -13,7 +13,7 @@ export default function RecipeScrapingForm({
   variant, // Optional property. Allowed values: "inline"
   startingErrorMessage,
 }) {
-  const [submitError, setSubmitError] = useState(startingErrorMessage);
+  const [errorMessage, setErrorMessage] = useState(startingErrorMessage);
 
   const {
     register,
@@ -23,19 +23,19 @@ export default function RecipeScrapingForm({
 
   useEffect(() => {
     if (errors?.recipeUrl?.message) {
-      setSubmitError(errors.recipeUrl.message);
+      setErrorMessage(errors.recipeUrl.message);
     }
   }, [errors.recipeUrl]);
 
   async function onFormSubmit({ recipeUrl }) {
-    setSubmitError("");
+    setErrorMessage("");
     onSubmit();
 
     const recipe = await getRecipeFromUrl(recipeUrl);
 
     if (typeof recipe === "string") {
       onFailure(recipe);
-      setSubmitError(recipe);
+      setErrorMessage(recipe);
     } else {
       onSuccess(recipe);
     }
@@ -55,8 +55,8 @@ export default function RecipeScrapingForm({
         variant="outlined"
         size="small"
         fullWidth
-        error={Boolean(submitError)}
-        helperText={submitError}
+        error={Boolean(errorMessage)}
+        helperText={errorMessage}
         {...register("recipeUrl", {
           validate: isValidHttpURL,
         })}
