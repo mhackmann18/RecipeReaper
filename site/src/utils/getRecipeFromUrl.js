@@ -28,7 +28,7 @@ export default async function getRecipeFromUrl(url) {
       `${process.env.REACT_APP_SCRAPER_ORIGIN}/recipe-data?url=${parsedUrl}`
     );
   } catch (error) {
-    return error.message;
+    return error;
   }
 
   if (response.status === 200) {
