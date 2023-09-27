@@ -10,7 +10,7 @@ export default function RecipeScrapingForm({
   onSubmit,
   onSuccess,
   onFailure,
-  variant, // Optional property. Allowed values: "inline"
+  variant, // Optional prop. Allowed values: "inline"
   startingErrorMessage,
 }) {
   const [errorMessage, setErrorMessage] = useState(startingErrorMessage);
@@ -21,6 +21,7 @@ export default function RecipeScrapingForm({
     formState: { errors },
   } = useForm();
 
+  // Keep errorMessage in sync with useForm's error message
   useEffect(() => {
     if (errors?.recipeUrl?.message) {
       setErrorMessage(errors.recipeUrl.message);
@@ -28,16 +29,15 @@ export default function RecipeScrapingForm({
   }, [errors.recipeUrl]);
 
   async function onFormSubmit({ recipeUrl }) {
-    setErrorMessage("");
     onSubmit();
 
-    const recipe = await getRecipeFromUrl(recipeUrl);
+    const data = await getRecipeFromUrl(recipeUrl);
 
-    if (typeof recipe === "string") {
-      onFailure(recipe);
-      setErrorMessage(recipe);
+    if (typeof data === "string") {
+      onFailure(data);
+      setErrorMessage(data);
     } else {
-      onSuccess(recipe);
+      onSuccess(data);
     }
   }
 
@@ -50,10 +50,7 @@ export default function RecipeScrapingForm({
       <label htmlFor="recipe-url" hidden />
       <TextField
         id="recipe-url"
-        // autoComplete="off"
         placeholder="Paste a recipe's URL"
-        variant="outlined"
-        size="small"
         fullWidth
         error={Boolean(errorMessage)}
         helperText={errorMessage}
@@ -72,16 +69,14 @@ export default function RecipeScrapingForm({
 }
 
 RecipeScrapingForm.propTypes = {
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
   onSuccess: PropTypes.func.isRequired,
-  onFailure: PropTypes.func,
+  onFailure: PropTypes.func.isRequired,
   variant: PropTypes.string,
   startingErrorMessage: PropTypes.string,
 };
 
 RecipeScrapingForm.defaultProps = {
-  onSubmit: () => false,
-  onFailure: () => false,
   variant: "",
   startingErrorMessage: "",
 };
