@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import user from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import SavedRecipeItem from "./Item";
 import data from "../../../assets/data.json";
@@ -31,8 +31,8 @@ test("Check that calories input value is updating after typing new value", async
 
   const caloriesInput = screen.getByLabelText("Calories");
 
-  userEvent.clear(caloriesInput);
-  userEvent.type(caloriesInput, "100");
+  user.clear(caloriesInput);
+  user.type(caloriesInput, "100");
 
   await waitFor(() => {
     expect(caloriesInput).toHaveValue(100);

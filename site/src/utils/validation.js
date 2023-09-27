@@ -14,7 +14,7 @@ export function isValidNumberInput(input, maxValue = Infinity, minValue = 0) {
   return false;
 }
 
-export function isValidHttpURL(string) {
+export function isValidHttpUrl(string) {
   // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
   let url;
   try {

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import getRecipeFromUrl from "../../utils/getRecipeFromUrl";
-import { isValidHttpURL } from "../../utils/validation";
+import { isValidHttpUrl } from "../../utils/validation";
 import "./RecipeScrapingForm.css";
 
 export default function RecipeScrapingForm({
@@ -55,7 +55,7 @@ export default function RecipeScrapingForm({
         error={Boolean(errorMessage)}
         helperText={errorMessage}
         {...register("recipeUrl", {
-          validate: isValidHttpURL,
+          validate: isValidHttpUrl,
           onChange: () => setErrorMessage(""),
         })}
       />
