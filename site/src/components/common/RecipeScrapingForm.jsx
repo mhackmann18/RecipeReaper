@@ -59,6 +59,7 @@ export default function RecipeScrapingForm({
         helperText={errorMessage}
         {...register("recipeUrl", {
           validate: isValidHttpURL,
+          onChange: () => setErrorMessage(""),
         })}
       />
       <div className="button-wrapper">
