@@ -1,6 +1,6 @@
 # RecipeReaper
 
-A web app for recipe scraping and management - <a href="https://www.markdownguide.org" target="_blank">recipereaper.com</a>
+A web app for recipe scraping and management - <a href="https://www.recipereaper.com" target="_blank">recipereaper.com</a>
 
 ## Setup and Run in Dev Environment
 
