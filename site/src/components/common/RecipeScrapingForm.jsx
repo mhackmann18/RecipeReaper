@@ -71,12 +71,13 @@ export default function RecipeScrapingForm({
 RecipeScrapingForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onSuccess: PropTypes.func.isRequired,
-  onFailure: PropTypes.func.isRequired,
+  onFailure: PropTypes.func,
   variant: PropTypes.string,
   startingErrorMessage: PropTypes.string,
 };
 
 RecipeScrapingForm.defaultProps = {
+  onFailure: () => null,
   variant: "",
   startingErrorMessage: "",
 };

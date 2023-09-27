@@ -1,7 +1,11 @@
 /* eslint-disable camelcase */
 import Recipe from "./Recipe";
 
-// Return Recipe or error string
+/**
+ * Makes an HTTP request to the scraper api with the provided url.
+ * @param {string} url - A valid http url.
+ * @returns A promise that resolves to an instance of the Recipe class or an error message string.
+ */
 export default async function getRecipeFromUrl(url) {
   // In the Safari browser, copying a link from google's search results does not copy the actual site url.
   // Instead the clipboard value is google.com's url with the site url passed as a query parameter.
@@ -24,7 +28,7 @@ export default async function getRecipeFromUrl(url) {
       `${process.env.REACT_APP_SCRAPER_ORIGIN}/recipe-data?url=${parsedUrl}`
     );
   } catch (error) {
-    return error;
+    return error.message;
   }
 
   if (response.status === 200) {
@@ -41,7 +45,7 @@ export default async function getRecipeFromUrl(url) {
       canonical_url,
     } = data;
 
-    // These three fields are required in recipe
+    // Required properties
     if (!yields || !title || !ingredients || !ingredients.length) {
       return "Unable to get recipe from url";
     }
@@ -56,11 +60,6 @@ export default async function getRecipeFromUrl(url) {
       cookTime: cook_time,
       originalUrl: canonical_url,
     });
-  }
-
-  if (response.status === 400) {
-    const errText = await response.text();
-    return errText;
   }
 
   const errText = await response.text();
