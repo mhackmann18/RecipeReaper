@@ -2,7 +2,9 @@
 
 A web app for recipe scraping and management. 
 
-## Setup
+## Setup Dev Environment
+
+Make sure you have the latest version of Docker Desktop installed.
 
 Clone this repository
 ```bash
@@ -20,12 +22,8 @@ Create jwt_secret.txt
 ```bash
 echo 'my-32-character-ultra-secure-and-ultra-long-secret' >jwt_secret.txt
 ```
-Build Docker images
-```bash
-docker compose -f compose.dev.yaml build
-```
-Run the app
+Build Docker images and run containers
 ```bash
 docker compose -f compose.dev.yaml up -d
 ```
-Open your browser and visit http://localhost:3000. The app should be up and running.
+Open your browser and visit http://localhost:3000 to view the app. The /site/src, /api/app, and /scraper directories have bind mounts into the containers. Changes in these directories will be reflected in the running app without having to rebuild the Docker images. 
