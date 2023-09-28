@@ -14,6 +14,7 @@ export default function RecipeScrapingForm({
   startingErrorMessage,
 }) {
   const [errorMessage, setErrorMessage] = useState(startingErrorMessage);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -29,6 +30,7 @@ export default function RecipeScrapingForm({
   }, [errors.recipeUrl]);
 
   async function onFormSubmit({ recipeUrl }) {
+    setLoading(true);
     onSubmit();
 
     const data = await getRecipeFromUrl(recipeUrl);
@@ -39,6 +41,7 @@ export default function RecipeScrapingForm({
     } else {
       onSuccess(data);
     }
+    setLoading(false);
   }
 
   return (
@@ -60,7 +63,11 @@ export default function RecipeScrapingForm({
         })}
       />
       <div className="button-wrapper">
-        <button className="btn-default" type="submit">
+        <button
+          className="btn-default"
+          type="submit"
+          disabled={Boolean(loading)}
+        >
           Get Recipe
         </button>
       </div>
