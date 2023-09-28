@@ -2,10 +2,13 @@ import "@testing-library/jest-dom";
 import { render, screen, cleanup, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RecipeScrapingForm from "./RecipeScrapingForm";
-import getRecipeFromUrl from "../../utils/getRecipeFromUrl";
+import getRecipeFromUrl from "../../utils/getRecipeFromUrl"; // api call
 
-// Properly formatted url, but not necessarily a url that will guarantee a successful api response via getRecipeFromUrl
+jest.mock("../../utils/getRecipeFromUrl");
+
+// Properly formatted url, but doesn't guarantee a successful response from api
 const VALID_URL = "https://momsdish.com/recipe/260/steak-sandwich-recipe";
+const INVALID_URL = "htp://this-is-an-invalid-url";
 
 function setup() {
   const user = userEvent.setup();
@@ -29,35 +32,24 @@ function setup() {
 
 afterEach(() => cleanup());
 
-jest.mock("../../utils/getRecipeFromUrl");
+test("Calls onSuccess with recipe data after api returns recipe data", async () => {
+  const { user, onSubmit, onSuccess } = setup();
+  const apiData = {
+    title: "This is a valid recipe response",
+  };
+  getRecipeFromUrl.mockImplementation(async () => apiData);
 
-test("Renders text input and button", () => {
-  setup();
+  await user.type(
+    screen.getByPlaceholderText(/Paste a recipe's url/i),
+    VALID_URL
+  );
+  await user.click(screen.getByRole("button", { name: /Get Recipe/i }));
 
-  expect(
-    screen.getByRole("button", { name: /Get Recipe/i })
-  ).toBeInTheDocument();
-  expect(
-    screen.getByPlaceholderText(/Paste a recipe's url/i)
-  ).toBeInTheDocument();
+  expect(onSubmit).toHaveBeenCalled();
+  await waitFor(() => expect(onSuccess).toHaveBeenCalledWith(apiData));
 });
 
-test("Show error after submitting incorrectly formatted url input", async () => {
-  const { user, onSubmit } = setup();
-  const url = "htp://this-is-an-invalid-url";
-  const input = screen.getByPlaceholderText(/Paste a recipe's url/i);
-
-  await user.type(input, url);
-  user.click(screen.getByRole("button", { name: /Get Recipe/i }));
-
-  expect(input).toHaveValue(url);
-  await waitFor(() => {
-    expect(screen.getByText(/Please enter a valid url/i)).toBeInTheDocument();
-    expect(onSubmit).not.toHaveBeenCalled();
-  });
-});
-
-test("Show error and call onFailure after api returns error", async () => {
+test("Shows an error message and calls onFailure after api returns error", async () => {
   const { user, onFailure } = setup();
   const errorMessage = "Failed to get recipe from the url";
   getRecipeFromUrl.mockImplementation(async () => errorMessage);
@@ -72,11 +64,35 @@ test("Show error and call onFailure after api returns error", async () => {
   expect(screen.getByText(errorMessage)).toBeInTheDocument();
 });
 
-// Hide error after changing input
+test("Shows an error message after attempting to submit incorrectly formatted url input", async () => {
+  const { user, onSubmit } = setup();
+  const input = screen.getByPlaceholderText(/Paste a recipe's url/i);
+
+  await user.type(input, INVALID_URL);
+  user.click(screen.getByRole("button", { name: /Get Recipe/i }));
+
+  expect(input).toHaveValue(INVALID_URL);
+  await waitFor(() => {
+    expect(screen.getByText(/Please enter a valid url/i)).toBeInTheDocument();
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+});
+
+test("Hides error message after changing input", async () => {
+  const { user } = setup();
+  const input = screen.getByPlaceholderText(/Paste a recipe's url/i);
+
+  await user.type(input, INVALID_URL);
+  await user.click(screen.getByRole("button", { name: /Get Recipe/i }));
+  waitFor(() => screen.getByText(/Please enter a valid url/i));
+  await user.type(input, "updated input");
+
+  expect(screen.queryByText(/Please enter a valid url/i)).toBe(null);
+});
 
 // Accept correctly formatted url
 
-test("Disable submit button until api responds", async () => {
+test("Disables the submit button after submitting and renables it after api responds", async () => {
   const { user, onSuccess } = setup();
   const submitButton = screen.getByRole("button", { name: /Get Recipe/i });
   getRecipeFromUrl.mockImplementation(async () => {
