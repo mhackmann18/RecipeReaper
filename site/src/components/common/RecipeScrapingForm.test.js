@@ -69,7 +69,7 @@ test("Shows an error message after attempting to submit incorrectly formatted ur
   const input = screen.getByPlaceholderText(/Paste a recipe's url/i);
 
   await user.type(input, INVALID_URL);
-  user.click(screen.getByRole("button", { name: /Get Recipe/i }));
+  await user.click(screen.getByRole("button", { name: /Get Recipe/i }));
 
   expect(input).toHaveValue(INVALID_URL);
   await waitFor(() => {
