@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LibraryItem from "./Item";
 import Recipe from "../../../utils/Recipe";
 import User from "../../../utils/UserController";
 import Toast from "../../common/Toast";
 import useToast from "../../../hooks/useToast";
-// import Spinner from "../../common/Spinner";
 import NoContentMessage from "../../common/NoContentMessage";
 import useRedirectOnAuthError from "../../../hooks/useRedirectOnAuthError";
 import "./index.css";
@@ -13,6 +13,7 @@ export default function Library() {
   const [recipes, setRecipes] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const redirectOnAuthError = useRedirectOnAuthError();
   const { addErrorToastMessage, addSuccessToastMessage, closeToast, toast } =
     useToast();
@@ -73,9 +74,15 @@ export default function Library() {
       <LibraryItem
         key={recipe.id}
         recipe={recipe}
-        addErrorToastMessage={addErrorToastMessage}
-        onDelete={handleRecipeDelete}
-        onDuplicate={handleRecipeDuplicate}
+        onClick={() => navigate(`${recipe.id}`)}
+        onDeleteSuccess={handleRecipeDelete}
+        onDuplicateSuccess={handleRecipeDuplicate}
+        onEditBtnClick={() =>
+          navigate(`${recipe.id}`, {
+            state: { startAsForm: true },
+          })
+        }
+        handleError={addErrorToastMessage}
       />
     ))
   ) : (

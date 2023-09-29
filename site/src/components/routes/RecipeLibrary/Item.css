@@ -32,17 +32,21 @@
   padding-right: 0;
 }
 
-.library-item .right {
+.library-item .buttons {
   display: flex;
   align-items: center;
 }
 
-.library-item .option-btn {
-  margin-left: 16px;
+.library-item .buttons button {
+  height: 44px;
+  width: 44px;
   color: var(--onyx);
+  background-color: transparent;
+  border: none;
 }
 
-.library-item .option-btn:hover {
+.library-item .buttons button:hover {
+  cursor: pointer;
   color: var(--slate-gray);
 }
 
@@ -55,7 +59,7 @@
     margin-top: 10px;
   }
 
-  .library-item .option-btn:first-child {
+  .library-item .buttons button:first-child {
     margin: 0;
   }
 }

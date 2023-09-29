@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClone,
@@ -15,30 +14,31 @@ import User from "../../../utils/UserController";
 import useRedirectOnAuthError from "../../../hooks/useRedirectOnAuthError";
 import "./Item.css";
 
-export default function LibraryItem({
+export default function RecipeLibraryItem({
   recipe,
-  onDelete,
-  onDuplicate,
-  addErrorToastMessage,
+  onClick,
+  onDeleteSuccess,
+  onDuplicateSuccess,
+  onEditBtnClick,
+  handleError,
 }) {
   const { id, title, servings } = recipe;
   const caloriesPerRecipeServing = recipe.nutrients?.calories?.quantity;
-  const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const redirectOnAuthError = useRedirectOnAuthError();
   const { user } = useUser();
 
-  const handleDeleteRecipe = () => {
+  const deleteRecipe = () => {
     User.deleteRecipe(id).then(({ data, message, error }) => {
       redirectOnAuthError(error);
 
       // Success
       if (data) {
-        onDelete(id);
+        onDeleteSuccess(id);
 
         // Failure
-      } else if (message) {
-        addErrorToastMessage(
+      } else if (error) {
+        handleError(
           `Unable to delete recipe. ${
             message || "An unexpected error occurred"
           }`
@@ -47,14 +47,20 @@ export default function LibraryItem({
     });
   };
 
-  const handleDuplicateRecipe = () => {
+  const handleDeleteBtnClick = (e) => {
+    e.stopPropagation();
+    setDeleteModalOpen(true);
+  };
+
+  const handleDuplicateBtnClick = (e) => {
+    e.stopPropagation();
     User.saveRecipe(recipe, user).then(({ data, message, error }) => {
       redirectOnAuthError(error);
 
       if (data) {
-        onDuplicate(data);
+        onDuplicateSuccess(data);
       } else if (error) {
-        addErrorToastMessage(
+        handleError(
           `Unable to duplicate recipe. ${
             message || "An unexpected error occurred"
           }`
@@ -63,11 +69,18 @@ export default function LibraryItem({
     });
   };
 
+  const handleEditBtnClick = (e) => {
+    e.stopPropagation();
+    onEditBtnClick();
+  };
+
   return (
     <>
       <div
         className="library-item"
-        onClick={() => navigate(`/dashboard/recipe-library/${id}`)}
+        onClick={onClick}
+        role="button"
+        aria-label={recipe.title}
       >
         <div className="left">
           <h2>{title}</h2>
@@ -80,58 +93,58 @@ export default function LibraryItem({
             )}
           </div>
         </div>
-        <div className="right">
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            className="option-btn btn"
-            title="Delete"
-            size="1x"
-            onClick={(e) => {
-              setModalOpen(true);
-              e.stopPropagation();
-            }}
-          />
-          <FontAwesomeIcon
-            icon={faClone}
-            className="option-btn btn"
-            title="Duplicate"
-            size="1x"
-            onClick={(e) => {
-              handleDuplicateRecipe();
-              e.stopPropagation();
-            }}
-          />
-          <FontAwesomeIcon
-            icon={faPenToSquare}
-            className="option-btn btn"
-            title="Edit"
-            size="1x"
-            onClick={(e) => {
-              navigate(`/dashboard/recipe-library/${id}`, {
-                state: { startAsForm: true },
-              });
-              e.stopPropagation();
-            }}
-          />
+        <div className="buttons">
+          <button
+            title="Edit recipe"
+            aria-label="Edit recipe"
+            type="button"
+            onClick={handleEditBtnClick}
+          >
+            <FontAwesomeIcon icon={faPenToSquare} size="lg" />
+          </button>
+          <button
+            title="Duplicate recipe"
+            aria-label="Duplicate recipe"
+            type="button"
+            onClick={handleDuplicateBtnClick}
+          >
+            <FontAwesomeIcon icon={faClone} size="lg" />
+          </button>
+          <button
+            title="Delete recipe"
+            aria-label="Delete recipe"
+            type="button"
+            onClick={handleDeleteBtnClick}
+          >
+            <FontAwesomeIcon icon={faTrashCan} size="lg" />
+          </button>
         </div>
       </div>
-      <StandardModal open={modalOpen} handleClose={() => setModalOpen(false)}>
+      <StandardModal
+        open={deleteModalOpen}
+        handleClose={() => setDeleteModalOpen(false)}
+      >
         <ConfirmationDisplay
           headerText="Delete Recipe"
           messageText={`Are you sure you want to delete the recipe '${title}'?`}
           cancelBtnText="Cancel"
           confirmBtnText="Delete"
-          onCancel={() => setModalOpen(false)}
-          onConfirm={handleDeleteRecipe}
+          onCancel={() => setDeleteModalOpen(false)}
+          onConfirm={() => {
+            deleteRecipe();
+            setDeleteModalOpen(false);
+          }}
         />
       </StandardModal>
     </>
   );
 }
 
-LibraryItem.propTypes = {
+RecipeLibraryItem.propTypes = {
   recipe: PropTypes.instanceOf(Recipe).isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onDuplicate: PropTypes.func.isRequired,
-  addErrorToastMessage: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onDeleteSuccess: PropTypes.func.isRequired,
+  onDuplicateSuccess: PropTypes.func.isRequired,
+  onEditBtnClick: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired,
 };

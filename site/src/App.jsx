@@ -6,7 +6,7 @@ import Splash from "./components/routes/Splash";
 import Dashboard from "./components/routes/Dashboard";
 import Import from "./components/routes/Import";
 import Create from "./components/routes/Create";
-import Library from "./components/routes/Library";
+import RecipeLibrary from "./components/routes/RecipeLibrary";
 import Settings from "./components/routes/Settings";
 import SavedRecipe from "./components/routes/SavedRecipe";
 import Search from "./components/routes/Search";
@@ -65,7 +65,7 @@ export default function App() {
                 element={<Search redirectTo="/dashboard/import-recipe" />}
               />
               <Route path="create-recipe" element={<Create />} />
-              <Route path="recipe-library" element={<Library />} />
+              <Route path="recipe-library" element={<RecipeLibrary />} />
               <Route path="recipe-library/:id/" element={<SavedRecipe />} />
               <Route path="settings" element={<Settings />} />
             </Route>
