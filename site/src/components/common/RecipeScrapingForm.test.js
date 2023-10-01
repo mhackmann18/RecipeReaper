@@ -12,28 +12,43 @@ const INVALID_URL = "htp://this-is-an-invalid-url";
 
 function setup() {
   const user = userEvent.setup();
-  const onSubmit = jest.fn();
-  const onSuccess = jest.fn();
-  const onFailure = jest.fn();
-  render(
+  const handleRecipeData = jest.fn();
+
+  const { rerender } = render(
     <RecipeScrapingForm
-      onSubmit={onSubmit}
-      onSuccess={onSuccess}
-      onFailure={onFailure}
+      handleRecipeData={handleRecipeData}
+      loading={false}
+      setLoading={() => null}
     />
   );
+
+  const setLoading = (loading) =>
+    rerender(
+      <RecipeScrapingForm
+        handleRecipeData={handleRecipeData}
+        loading={loading}
+        setLoading={setLoading}
+      />
+    );
+
+  rerender(
+    <RecipeScrapingForm
+      handleRecipeData={handleRecipeData}
+      loading={false}
+      setLoading={setLoading}
+    />
+  );
+
   return {
     user,
-    onSubmit,
-    onSuccess,
-    onFailure,
+    handleRecipeData,
   };
 }
 
 afterEach(() => cleanup());
 
-test("Calls onSuccess with recipe data after api returns recipe data", async () => {
-  const { user, onSubmit, onSuccess } = setup();
+test("Calls handleRecipeData after api returns recipe data", async () => {
+  const { user, handleRecipeData } = setup();
   const apiData = {
     title: "This is a valid recipe response",
   };
@@ -45,12 +60,11 @@ test("Calls onSuccess with recipe data after api returns recipe data", async () 
   );
   await user.click(screen.getByRole("button", { name: /Get Recipe/i }));
 
-  expect(onSubmit).toHaveBeenCalled();
-  await waitFor(() => expect(onSuccess).toHaveBeenCalledWith(apiData));
+  await waitFor(() => expect(handleRecipeData).toHaveBeenCalledWith(apiData));
 });
 
-test("Shows an error message and calls onFailure after api returns error", async () => {
-  const { user, onFailure } = setup();
+test("Shows an error message after api returns error", async () => {
+  const { user } = setup();
   const errorMessage = "Failed to get recipe from the url";
   getRecipeFromUrl.mockImplementation(async () => errorMessage);
 
@@ -60,12 +74,13 @@ test("Shows an error message and calls onFailure after api returns error", async
   );
   await user.click(screen.getByRole("button", { name: /Get Recipe/i }));
 
-  await waitFor(() => expect(onFailure).toHaveBeenCalledWith(errorMessage));
-  expect(screen.getByText(errorMessage)).toBeInTheDocument();
+  await waitFor(() =>
+    expect(screen.getByText(errorMessage)).toBeInTheDocument()
+  );
 });
 
 test("Shows an error message after attempting to submit incorrectly formatted url input", async () => {
-  const { user, onSubmit } = setup();
+  const { user, handleRecipeData } = setup();
   const input = screen.getByPlaceholderText(/Paste a recipe's url/i);
 
   await user.type(input, INVALID_URL);
@@ -74,7 +89,7 @@ test("Shows an error message after attempting to submit incorrectly formatted ur
   expect(input).toHaveValue(INVALID_URL);
   await waitFor(() => {
     expect(screen.getByText(/Please enter a valid url/i)).toBeInTheDocument();
-    expect(onSubmit).not.toHaveBeenCalled();
+    expect(handleRecipeData).not.toHaveBeenCalled();
   });
 });
 
@@ -90,10 +105,8 @@ test("Hides error message after changing input", async () => {
   expect(screen.queryByText(/Please enter a valid url/i)).toBe(null);
 });
 
-// Accept correctly formatted url
-
 test("Disables the submit button after submitting and renables it after api responds", async () => {
-  const { user, onSuccess } = setup();
+  const { user, handleRecipeData } = setup();
   const submitButton = screen.getByRole("button", { name: /Get Recipe/i });
   getRecipeFromUrl.mockImplementation(async () => {
     // eslint-disable-next-line no-promise-executor-return
@@ -107,7 +120,7 @@ test("Disables the submit button after submitting and renables it after api resp
   );
   await user.click(submitButton);
 
-  expect(submitButton).toBeDisabled();
-  await waitFor(() => expect(onSuccess).toHaveBeenCalled());
+  await waitFor(() => expect(submitButton).toBeDisabled());
+  await waitFor(() => expect(handleRecipeData).toHaveBeenCalled());
   expect(submitButton).not.toBeDisabled();
 });

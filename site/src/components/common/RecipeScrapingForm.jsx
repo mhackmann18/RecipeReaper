@@ -7,20 +7,18 @@ import { isValidHttpUrl } from "../../utils/validation";
 import "./RecipeScrapingForm.css";
 
 export default function RecipeScrapingForm({
-  onSubmit,
-  onSuccess,
-  onFailure,
-  variant, // Optional prop. Allowed values: "inline"
-  startingErrorMessage,
+  handleRecipeData,
+  variant, // Optional. Valid values: "inline"
+  loading,
+  setLoading,
 }) {
-  const [errorMessage, setErrorMessage] = useState(startingErrorMessage);
-  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ reValidateMode: "onSubmit" });
 
   // Keep errorMessage in sync with useForm's error message
   useEffect(() => {
@@ -29,34 +27,31 @@ export default function RecipeScrapingForm({
     }
   }, [errors.recipeUrl]);
 
-  async function onFormSubmit({ recipeUrl }) {
+  async function handleFormSubmit({ recipeUrl }) {
     setLoading(true);
-    onSubmit();
-
     const data = await getRecipeFromUrl(recipeUrl);
+    setLoading(false);
 
     if (typeof data === "string") {
-      onFailure(data);
       setErrorMessage(data);
     } else {
-      onSuccess(data);
+      handleRecipeData(data);
     }
-    setLoading(false);
   }
 
   return (
     <form
       id="recipe-scraping-form"
       className={variant}
-      onSubmit={handleSubmit(onFormSubmit)}
+      onSubmit={handleSubmit(handleFormSubmit)}
     >
       <label htmlFor="recipe-url" hidden />
       <TextField
         id="recipe-url"
         placeholder="Paste a recipe's URL"
-        fullWidth
         error={Boolean(errorMessage)}
         helperText={errorMessage}
+        fullWidth
         {...register("recipeUrl", {
           validate: isValidHttpUrl,
           onChange: () => setErrorMessage(""),
@@ -76,15 +71,12 @@ export default function RecipeScrapingForm({
 }
 
 RecipeScrapingForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onSuccess: PropTypes.func.isRequired,
-  onFailure: PropTypes.func,
+  handleRecipeData: PropTypes.func.isRequired,
   variant: PropTypes.string,
-  startingErrorMessage: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 RecipeScrapingForm.defaultProps = {
-  onFailure: () => null,
   variant: "",
-  startingErrorMessage: "",
 };

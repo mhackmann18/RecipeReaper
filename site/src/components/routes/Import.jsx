@@ -6,33 +6,24 @@ import LoadingRecipeItem from "./Features/LoadingRecipeItem";
 import "./Import.css";
 
 export default function Import() {
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [loadingRecipe, setLoadingRecipe] = useState(false);
   const navigate = useNavigate();
-
-  const handleSubmit = (res) =>
-    navigate("/dashboard/import-recipe/search", { state: { data: res } });
 
   return (
     <div id="import-page">
-      {loading ? (
-        <LoadingRecipeItem />
-      ) : (
-        <>
-          <div className="center-content">
-            <img className="mascot" src={reaper} alt="reaper" />
-          </div>
-          <RecipeScrapingForm
-            onSubmit={() => setLoading(true)}
-            onSuccess={handleSubmit}
-            onFailure={(error) => {
-              setLoading(false);
-              setErrorMessage(error);
-            }}
-            startingErrorMessage={errorMessage}
-          />
-        </>
-      )}
+      {loadingRecipe && <LoadingRecipeItem />}
+      <div className="form-wrapper" hidden={Boolean(loadingRecipe)}>
+        <img className="mascot" src={reaper} alt="reaper" />
+        <RecipeScrapingForm
+          handleRecipeData={(data) =>
+            navigate("/dashboard/import-recipe/search", {
+              state: { data },
+            })
+          }
+          loading={loadingRecipe}
+          setLoading={setLoadingRecipe}
+        />
+      </div>
     </div>
   );
 }

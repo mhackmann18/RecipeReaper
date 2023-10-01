@@ -21,11 +21,6 @@ export default function Features() {
 
   const navigate = useNavigate();
 
-  const handleRSFResponse = (data) => {
-    setLoadingRecipe(false);
-    setRecipe(new Recipe({ ...data }));
-  };
-
   return (
     <div id="home-page">
       <div className="view">
@@ -42,9 +37,11 @@ export default function Features() {
           </p>
           <RecipeScrapingForm
             variant="inline"
-            onSubmit={() => setLoadingRecipe(true)}
-            onSuccess={handleRSFResponse}
-            onFailure={() => setLoadingRecipe(false)}
+            handleRecipeData={(data) => {
+              setRecipe(new Recipe({ ...data }));
+            }}
+            loading={loadingRecipe}
+            setLoading={setLoadingRecipe}
           />
         </section>
       </div>
