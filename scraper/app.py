@@ -25,7 +25,7 @@ def get_recipe_data():
     # Check that client provided a url parameter
     if url == '':
         print('Client failed to provide a url parameter')
-        return 'Please provide a url parameter', 400
+        return 'Please provide a url', 400
 
     # Check for invalid urls
     if not validators.url(url):
@@ -40,7 +40,7 @@ def get_recipe_data():
         return 'Please provide a valid url', 400
     except recipe_scrapers._exceptions.NoSchemaFoundInWildMode:  
         print('Failed to scrape the provided url')
-        return 'Unable to obtain recipe data from the provided url. Please try a different url', 400
+        return 'Unable to find recipe from url', 400
     except Exception as ex:
         print(type(ex))
         return 'An unexpected error occurred', 500
