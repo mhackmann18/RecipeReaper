@@ -14,7 +14,7 @@ function setup() {
   const user = userEvent.setup();
   const handleRecipeData = jest.fn();
 
-  const { rerender } = render(
+  const { rerender, unmount } = render(
     <RecipeScrapingForm
       handleRecipeData={handleRecipeData}
       loading={false}
@@ -42,6 +42,7 @@ function setup() {
   return {
     user,
     handleRecipeData,
+    unmount,
   };
 }
 
