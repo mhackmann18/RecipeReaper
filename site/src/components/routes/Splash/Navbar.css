@@ -16,14 +16,14 @@
 }
 
 #app-logo {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-family: 'Oswald', sans-serif;
   color: var(--french-gray-2);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #app-logo strong {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--eerie-black);
 }
 
@@ -44,6 +44,15 @@
 
 #navbar-links a:not(.active):hover {
   background-color: var(--seasalt);
+}
+
+#toggle-nav {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+#toggle-nav .icon {
+  min-height: 28px;
 }
 
 /* Phones and small tablest */

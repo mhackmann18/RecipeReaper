@@ -55,7 +55,11 @@ export default function Navbar() {
         onClick={() => setMobileMenuVisible(!mobileMenuVisible)}
         type="button"
       >
-        <FontAwesomeIcon icon={faBars} className="viewport-small" size="xl" />
+        <FontAwesomeIcon
+          icon={faBars}
+          className="viewport-small icon"
+          size="xl"
+        />
       </button>
     </nav>
   );

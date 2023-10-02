@@ -8,21 +8,23 @@
   text-align: center;
 }
 
-.view .the-recipe-reaper {
-  width: 60%;
-  min-width: 160px;
+.view:first-of-type {
+  min-height: 100vh;
 }
 
-.view:first-child .the-recipe-reaper {
-  margin-right: 10vw;
+.view:nth-child(1) .the-recipe-reaper {
+  width: 54vw;
+  margin-right: 8vw;
 }
-  
+
 .view:nth-child(2) .the-recipe-reaper {
+  width: 51vw;
   margin-left: 8vw;
 }
 
 .view:nth-child(3) .the-recipe-reaper {
-  width: 74%;
+  width: 62vw;
+  margin-left: 3vw;
 }
 
 .view h2 {
@@ -62,7 +64,8 @@
 }
 
 #home-page .form-wrapper {
-  margin-bottom: 5rem;
+  height: 100vh;
+  display: flex;
 }
 
 #home-page .form-wrapper h2 {
@@ -72,7 +75,7 @@
 
 #footer-signup-form {
   width: 100%;
-  margin-top: 20vh;
+  margin-top: auto;
 }
 
 .recipe-popup-modal {
@@ -88,12 +91,19 @@
 
 /* Tablets */
 @media screen and (min-width: 480px) {
-  .view .the-recipe-reaper {
-    width: 300px;
+  .view:nth-child(1) .the-recipe-reaper {
+    width: 33vw;
+    margin-right: 8vw;
   }
-
+  
+  .view:nth-child(2) .the-recipe-reaper {
+    width: 31vw;
+    margin-left: 5vw;
+  }
+  
   .view:nth-child(3) .the-recipe-reaper {
-    width: 360px;
+    width: 39vw;
+    margin-left: 3vw;
   }
 
   .view h2 {
@@ -102,10 +112,6 @@
 
   .view br {
     display: inline;
-  }
-
-  #home-page .form-wrapper {
-    margin-bottom: 12rem;
   }
 }
 
@@ -126,22 +132,28 @@
     display: flex;
     text-align: left;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .view:first-child {
+    padding-top: 0;
   }
 
   .view:first-child .the-recipe-reaper {
-    width: 400px;
-    margin-right: 2rem;
+    width: 320px;
+    margin-right: min(4rem, 3vw);
   }
 
   .view:nth-child(2) .the-recipe-reaper {
     order: 2;
-    width: 320px;
-    margin: 0;
+    width: 290px;
+    /* margin-left: 3rem; */
+    margin-left: min(2vw, 3rem);
   }
 
   .view:nth-child(3) .the-recipe-reaper {
-    width: 420px;
+    width: 360px;
+    margin-right: 2rem;
   }
 
   .view ul {
@@ -158,13 +170,5 @@
 
   .view h2 {
     font-size: 3.4rem;
-  }
-
-  .view:nth-child(2) .the-recipe-reaper {
-    width: 380px;
-  }
-  
-  .view:nth-child(3) .the-recipe-reaper {
-    width: 440px;
   }
 }
