@@ -29,43 +29,43 @@ export function isValidHttpUrl(string) {
   );
 }
 
+/**
+ *
+ * @param {string} username
+ * @returns true if username is valid, otherwise error message string
+ */
 export function checkUsernameInput(username) {
-  let isValid = false;
-  let msg = "";
-
   if (!/^[a-zA-Z0-9_-]*$/.test(username)) {
-    msg =
-      "Username must only contain letters, numbers, dashes ( - ), and underscores ( _ )";
-  } else if (username.length < 6) {
-    msg = "Username must be at least 6 characters in length";
-  } else if (username.length > 30) {
-    msg = "Username must be no more than 30 character in length";
-  } else {
-    isValid = true;
+    return "Username must only contain letters, numbers, dashes ( - ), and underscores ( _ )";
   }
-
-  return [isValid, msg];
+  if (username.length < 6) {
+    return "Username must be at least 6 characters in length";
+  }
+  if (username.length > 30) {
+    return "Username must be no more than 30 character in length";
+  }
+  return true;
 }
 
-export async function checkPasswordInput(password) {
-  let isValid = false;
-  let msg = "";
-
+/**
+ *
+ * @param {string} password
+ * @returns true if password is valid, otherwise error message string
+ */
+export function checkPasswordInput(password) {
   if (password.length < 8) {
-    msg = "Password must be at least 8 characters in length";
-  } else if (password.length > 128) {
-    msg = "Password must be no more than 128 characters in length";
+    return "Password must be at least 8 characters in length";
+  }
+  if (password.length > 128) {
+    return "Password must be no more than 128 characters in length";
     // Regex from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
-  } else if (
+  }
+  if (
     !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&-])[A-Za-z\d@$!%*#?&-]{8,128}$/.test(
       password
     )
   ) {
-    msg =
-      "Password must contain at least one letter, one number, and one special character (@, $, !, %, *, #, ?, &, -)";
-  } else {
-    isValid = true;
+    return "Password must contain at least one letter, one number, and one special character (@, $, !, %, *, #, ?, &, -)";
   }
-
-  return [isValid, msg];
+  return true;
 }

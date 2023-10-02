@@ -3,17 +3,10 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  font-family: 'Work Sans', sans-serif;
 }
 
 .account-form h2 {
   text-align: center;
-}
-
-#login-msg {
-  text-align: center;
-  color: var(--slate-gray);
-  margin: 15px 0;
 }
 
 .account-form .signup-msg {
@@ -22,27 +15,19 @@
   margin-bottom: 16px;
 }
 
-.account-form .signup-msg a,
-#login-msg a {
+.account-form .signup-msg a {
   color: var(--eerie-black);
   text-decoration: underline;
 }
 
 .account-form label {
-  margin-top: 8px;
-}
-
-.account-form input {
-  padding: 8px;
-  border: 1px solid var(--french-gray);
-  border-radius: 8px;
+  margin-top: 16px;
   margin-bottom: 8px;
-  margin-top: 8px;
 }
 
 .account-form button {
-  margin-top: 8px;
-  padding: 12px;
+  margin-top: 16px;
+  padding: 14px;
   font-weight: 500;
 }
 

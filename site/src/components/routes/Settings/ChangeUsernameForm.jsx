@@ -17,9 +17,9 @@ export default function ChangeUsernameForm({ onCancel, onSuccess }) {
     e.preventDefault();
     const newUsername = e.target.username.value;
 
-    const [isValid, errorMessage] = checkUsernameInput(newUsername);
+    const errorMessage = checkUsernameInput(newUsername);
 
-    if (!isValid) {
+    if (typeof errorMessage === "string") {
       setInputError(errorMessage);
     } else {
       User.update({ username: newUsername }, user).then(

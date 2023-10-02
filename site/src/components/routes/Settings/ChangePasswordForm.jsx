@@ -18,9 +18,9 @@ export default function ChangePasswordForm({ onCancel, onSuccessfulSubmit }) {
     const newPassword = e.target["new-password"].value;
     const confirmNewPassword = e.target["confirm-new-password"].value;
 
-    const [isValid, errorMessage] = await checkPasswordInput(newPassword);
+    const errorMessage = checkPasswordInput(newPassword);
 
-    if (!isValid) {
+    if (typeof errorMessage === "string") {
       setInputError(errorMessage);
     } else if (confirmNewPassword !== newPassword) {
       setInputError("Passwords don't match");

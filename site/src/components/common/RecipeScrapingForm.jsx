@@ -68,7 +68,7 @@ export default function RecipeScrapingForm({
           type="submit"
           disabled={Boolean(loading)}
         >
-          Get Recipe
+          Get recipe
         </button>
       </div>
     </form>

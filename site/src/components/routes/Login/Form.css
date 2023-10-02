@@ -1,0 +1,10 @@
+.account-form .login-msg {
+  text-align: center;
+  color: var(--slate-gray);
+  margin: 15px 0;
+}
+
+.account-form .login-msg a {
+  color: var(--eerie-black);
+  text-decoration: underline;
+}

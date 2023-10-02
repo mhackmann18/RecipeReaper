@@ -4,6 +4,7 @@ import Alert from "@mui/material/Alert";
 import User from "../../../utils/UserController";
 import useUser from "../../../hooks/useUser";
 import "../Signup/Form.css";
+import "./Form.css";
 
 export default function LoginForm() {
   const [formSubmitError, setFormSubmitError] = useState("");
@@ -32,7 +33,7 @@ export default function LoginForm() {
   return (
     <form id="login-form" className="account-form" onSubmit={handleSubmit}>
       <h2>Log in</h2>
-      <p id="login-msg">
+      <p className="login-msg">
         Don&apos;t have an account yet? <Link to="/signup">Sign Up</Link>
       </p>
       <label htmlFor="username">Username</label>
