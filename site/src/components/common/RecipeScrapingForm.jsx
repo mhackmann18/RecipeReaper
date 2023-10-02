@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
-import useSignal from "../../hooks/useSignal";
+import useSignalOnComponentUnmount from "../../hooks/useSignalOnComponentUnmount";
 import getRecipeFromUrl from "../../utils/getRecipeFromUrl";
 import { isValidHttpUrl } from "../../utils/validation";
 import "./RecipeScrapingForm.css";
@@ -14,7 +14,7 @@ export default function RecipeScrapingForm({
   setLoading,
 }) {
   const [errorMessage, setErrorMessage] = useState("");
-  const signal = useSignal();
+  const signal = useSignalOnComponentUnmount();
 
   const {
     register,
@@ -22,7 +22,7 @@ export default function RecipeScrapingForm({
     formState: { errors },
   } = useForm({ reValidateMode: "onSubmit" });
 
-  // Keep errorMessage in sync with useForm's error message
+  // Keep errorMessage state in sync with useForm's error message prop
   useEffect(() => {
     if (errors?.recipeUrl?.message) {
       setErrorMessage(errors.recipeUrl.message);
@@ -33,7 +33,8 @@ export default function RecipeScrapingForm({
     setLoading(true);
     const data = await getRecipeFromUrl(recipeUrl, signal);
 
-    if (data === "request aborted") return;
+    // The signal from useSignalOnComponentUnmount has aborted the request
+    if (data === "The user aborted a request.") return;
 
     setLoading(false);
     if (typeof data === "string") {
