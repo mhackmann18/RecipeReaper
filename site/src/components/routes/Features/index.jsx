@@ -63,7 +63,7 @@ export default function Features() {
             </li>
             <li>
               <FontAwesomeIcon className="icon" icon={faCircle} />
-              <p>Export recipe pdfs for printing and sharing</p>
+              <p>Enjoy an intuitive and easy-to-use interface</p>
             </li>
           </ul>
         </section>

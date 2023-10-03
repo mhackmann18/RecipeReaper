@@ -82,7 +82,7 @@ export default function LoginForm({ onLogin }) {
 }
 
 LoginForm.propTypes = {
-  onLogin: PropTypes.string,
+  onLogin: PropTypes.func,
 };
 
 LoginForm.defaultProps = {
