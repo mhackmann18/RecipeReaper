@@ -9,7 +9,7 @@ import useUser from "../../../hooks/useUser";
 import "../Signup/Form.css";
 import "./Form.css";
 
-export default function LoginForm({ onSubmitSuccess }) {
+export default function LoginForm({ onLogin }) {
   const [formSubmitError, setFormSubmitError] = useState("");
   const [loading, setLoading] = useState(false);
   const { setUser } = useUser();
@@ -28,7 +28,7 @@ export default function LoginForm({ onSubmitSuccess }) {
       setFormSubmitError(message || "An unexpected error occurred");
     } else {
       setUser({ ...data });
-      onSubmitSuccess(data);
+      onLogin(data);
     }
   };
 
@@ -50,7 +50,7 @@ export default function LoginForm({ onSubmitSuccess }) {
         helperText={errors?.username?.message}
         fullWidth
         {...register("username", {
-          required: "Required",
+          required: "Required field",
         })}
       />
       <label htmlFor="password">Password</label>
@@ -62,7 +62,7 @@ export default function LoginForm({ onSubmitSuccess }) {
         fullWidth
         type="password"
         {...register("password", {
-          required: "Required",
+          required: "Required field",
         })}
       />
       <button
@@ -82,9 +82,9 @@ export default function LoginForm({ onSubmitSuccess }) {
 }
 
 LoginForm.propTypes = {
-  onSubmitSuccess: PropTypes.string,
+  onLogin: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
-  onSubmitSuccess: () => null,
+  onLogin: () => null,
 };
