@@ -42,7 +42,7 @@ export default function SignupForm({
     setLoading(false);
     if (data) {
       setUser({ ...data });
-      onSubmitSuccess();
+      onSubmitSuccess(data);
     } else if (error) {
       setFormSubmitError(message || "An unexpected error occurred");
     }

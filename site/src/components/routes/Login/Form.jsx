@@ -1,46 +1,75 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
 import Alert from "@mui/material/Alert";
 import User from "../../../utils/UserController";
 import useUser from "../../../hooks/useUser";
 import "../Signup/Form.css";
 import "./Form.css";
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmitSuccess }) {
   const [formSubmitError, setFormSubmitError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { setUser } = useUser();
-  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-
-    if (!username || !password) {
-      return setFormSubmitError("Please fill in all fields");
-    }
-
+  const handleFormSubmit = async (values) => {
+    const { username, password } = values;
+    setLoading(true);
     const { data, error, message } = await User.login({ username, password });
-
+    setLoading(false);
     if (error) {
       setFormSubmitError(message || "An unexpected error occurred");
     } else {
       setUser({ ...data });
-      navigate(`/dashboard`);
+      onSubmitSuccess(data);
     }
   };
 
   return (
-    <form id="login-form" className="account-form" onSubmit={handleSubmit}>
+    <form
+      id="login-form"
+      className="account-form"
+      onSubmit={handleSubmit(handleFormSubmit)}
+    >
       <h2>Log in</h2>
       <p className="login-msg">
         Don&apos;t have an account yet? <Link to="/signup">Sign Up</Link>
       </p>
       <label htmlFor="username">Username</label>
-      <input name="username" id="username" type="text" />
+      <TextField
+        size="small"
+        id="username"
+        error={Boolean(errors?.username?.message)}
+        helperText={errors?.username?.message}
+        fullWidth
+        {...register("username", {
+          required: "Required",
+        })}
+      />
       <label htmlFor="password">Password</label>
-      <input name="password" id="password" type="password" />
-      <button type="submit" className="btn-default bg-eerie-black">
+      <TextField
+        size="small"
+        id="password"
+        error={Boolean(errors?.password?.message)}
+        helperText={errors?.password?.message}
+        fullWidth
+        type="password"
+        {...register("password", {
+          required: "Required",
+        })}
+      />
+      <button
+        type="submit"
+        disabled={Boolean(loading)}
+        className="btn-default bg-eerie-black"
+      >
         Log in
       </button>
       {formSubmitError && (
@@ -51,3 +80,11 @@ export default function LoginForm() {
     </form>
   );
 }
+
+LoginForm.propTypes = {
+  onSubmitSuccess: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  onSubmitSuccess: () => null,
+};

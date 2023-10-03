@@ -140,19 +140,19 @@
   }
 
   .view:first-child .the-recipe-reaper {
-    width: 320px;
+    width: 340px;
     margin-right: min(4rem, 3vw);
   }
 
   .view:nth-child(2) .the-recipe-reaper {
     order: 2;
-    width: 290px;
+    width: 310px;
     /* margin-left: 3rem; */
     margin-left: min(2vw, 3rem);
   }
 
   .view:nth-child(3) .the-recipe-reaper {
-    width: 360px;
+    width: 380px;
     margin-right: 2rem;
   }
 
