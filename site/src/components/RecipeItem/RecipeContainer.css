@@ -61,7 +61,7 @@
 
 .form-style #recipe-content .left {
   width: 50%;
-  max-width: 34rem;
+  /* max-width: 34rem; */
   margin-right: 2rem;
 }
 
