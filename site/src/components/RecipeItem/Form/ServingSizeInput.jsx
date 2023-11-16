@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from "prop-types";
 import { TextField } from "@mui/material";
-// import { ErrorMessage } from "@hookform/error-message";
 import RecipeValidator from "../../../utils/RecipeValidator";
 import "./ServingSizeInput.css";
 
@@ -26,12 +25,8 @@ export default function ServingSizeInput({
           variant="outlined"
           size="small"
           fullWidth
-          error={Boolean(servingSizeErrors && servingSizeErrors.quantity)}
-          helperText={
-            servingSizeErrors &&
-            servingSizeErrors.quantity &&
-            servingSizeErrors.quantity.message
-          }
+          error={Boolean(servingSizeErrors?.quantity)}
+          helperText={servingSizeErrors?.quantity?.message}
           InputProps={{
             inputProps: {
               step: "any",
@@ -50,12 +45,8 @@ export default function ServingSizeInput({
           autoComplete="off"
           size="small"
           fullWidth
-          error={Boolean(servingSizeErrors && servingSizeErrors.unit)}
-          helperText={
-            servingSizeErrors &&
-            servingSizeErrors.unit &&
-            servingSizeErrors.unit.message
-          }
+          error={Boolean(servingSizeErrors?.unit)}
+          helperText={servingSizeErrors?.unit?.message}
         />
       </div>
     </div>
