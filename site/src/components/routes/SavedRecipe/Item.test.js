@@ -3,7 +3,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import SavedRecipeItem from "./Item";
-import data from "../../../assets/data.json";
+import data from "../../../__test__/recipes.json";
 import Recipe from "../../../utils/Recipe";
 
 test("Recipe form's save changes button is disabled by default", () => {

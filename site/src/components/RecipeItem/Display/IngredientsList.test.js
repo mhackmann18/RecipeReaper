@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import RecipeItemDisplayIngredientsList from "./IngredientsList";
-import data from "../../../assets/data.json";
+import data from "../../../__test__/recipes.json";
 import Ingredient from "../../../utils/Ingredient";
 import "@testing-library/jest-dom";
 

@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import UserContextProvider from "../../../UserContextProvider";
 import RecipeLibraryItem from "./Item";
 import Recipe from "../../../utils/Recipe";
-import data from "../../../assets/data.json";
+import data from "../../../__test__/recipes.json";
 import User from "../../../utils/UserController";
 
 jest.mock("../../../utils/UserController");
