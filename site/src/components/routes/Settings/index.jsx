@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SettingsList from "./List";
-import Button from "../../common/Button";
 import useUser from "../../../hooks/useUser";
 import StandardModal from "../../common/StandardModal";
 import ConfirmationDisplay from "../../common/ConfirmationDisplay";
@@ -39,18 +38,20 @@ export default function Settings() {
           <h1 id="page-heading">Settings</h1>
           <SettingsList />
           <div className="buttons-container">
-            <Button
-              text="Sign Out"
-              handleClick={() => {
-                logout();
-              }}
-              variant="default wide"
-            />
-            <Button
-              text="Delete Account"
-              handleClick={() => setModalOpen(true)}
-              variant="default wide"
-            />
+            <button
+              onClick={() => logout()}
+              className="default wide"
+              type="button"
+            >
+              Sign Out
+            </button>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="default wide"
+              type="button"
+            >
+              Delete Account
+            </button>
           </div>
         </div>
         <StandardModal open={modalOpen} handleClose={() => setModalOpen(false)}>

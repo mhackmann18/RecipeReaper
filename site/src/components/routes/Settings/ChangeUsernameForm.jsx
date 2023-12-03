@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Alert } from "@mui/material";
-import Button from "../../common/Button";
 import { checkUsernameInput } from "../../../utils/validation";
 import User from "../../../utils/UserController";
 import useUser from "../../../hooks/useUser";
@@ -52,8 +51,12 @@ export default function ChangeUsernameForm({ onCancel, onSuccess }) {
         </Alert>
       )}
       <div className="row buttons">
-        <Button text="Cancel" handleClick={onCancel} variant="btn-no-bg" />
-        <Button text="Save" type="submit" variant="btn-default" />
+        <button type="button" onClick={onCancel} className="btn-no-bg">
+          Cancel
+        </button>
+        <button type="submit" className="btn-default">
+          Save
+        </button>
       </div>
     </form>
   );

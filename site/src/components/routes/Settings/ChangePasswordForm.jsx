@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Alert } from "@mui/material";
-import Button from "../../common/Button";
 import { checkPasswordInput } from "../../../utils/validation";
 import User from "../../../utils/UserController";
 import useUser from "../../../hooks/useUser";
@@ -69,8 +68,12 @@ export default function ChangePasswordForm({ onCancel, onSuccessfulSubmit }) {
         </Alert>
       )}
       <div className="row buttons">
-        <Button text="Cancel" handleClick={onCancel} variant="btn-no-bg" />
-        <Button text="Save" type="submit" variant="btn-default" />
+        <button onClick={onCancel} type="button" className="btn-no-bg">
+          Cancel
+        </button>
+        <button type="submit" className="btn-default">
+          Save
+        </button>
       </div>
     </form>
   );
