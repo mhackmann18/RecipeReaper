@@ -2,11 +2,9 @@ version: '1'
 
 services:
   db:
-    build: 
-      context: .
-      dockerfile: Dockerfile.prod.mysql 
+    image: mysql:8.0
     ports:
-      - 127.0.0.1:3306:3306
+      - 3306:3306
     volumes:
       - recipereaper-data:/var/lib/mysql
     environment:
@@ -18,24 +16,20 @@ services:
       - recipereaper
 
   scraper:
-    image: recipereaper-scraper
-    build:
-      context: ./scraper
-      dockerfile: Dockerfile.prod
+    image: mhackmann18/recipereaper-scraper
+    volumes:
+      - /etc/pki:/etc/pki
     ports:
       - 8000:8000
     networks:
       - recipereaper
 
   api:
-    image: recipereaper-api
+    image: mhackmann18/recipereaper-api
     ports:
       - 8080:8080
     networks:
       - recipereaper
-    build: 
-      context: ./api
-      dockerfile: Dockerfile.prod
     environment:
       PORT: 8080
       CORS_ORIGIN: 'https://www.recipereaper.com'
@@ -48,7 +42,7 @@ services:
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
       MYSQL_DB: recipes
       ADMIN_USERNAME: god_of_prepmaster
-      SSL_KEY_FILE: /run/secrets/ssl_key
+      SSL_KEY_FILE: /run/secrets/ssl_key 
       SSL_CERT_FILE: /run/secrets/ssl_cert
     secrets:
       - jwt_secret
@@ -59,17 +53,18 @@ services:
       - db
 
   site:
-    image: recipereaper-site
-    ports: 
+    image: mhackmann18/recipereaper-site
+    ports:
       - 80:80
-    networks: 
+      - 443:443
+    volumes:
+      - /etc/pki:/etc/pki
+    networks:
       - recipereaper
-    build: 
-      context: ./site
-      dockerfile: Dockerfile.prod
 
 networks:
   recipereaper:
+    driver: bridge
 
 secrets:
   db_password:
