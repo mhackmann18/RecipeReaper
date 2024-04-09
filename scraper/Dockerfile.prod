@@ -11,4 +11,4 @@ COPY . .
 EXPOSE 8000
 
 # CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=8000"]
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "--keyfile", "key.pem", "--certfile", "cert.pem", "-w", "2", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "--keyfile", "/etc/pki/tls/private/custom.key", "--certfile", "/etc/pki/tls/private/cert.crt", "-w", "2", "app:app"]

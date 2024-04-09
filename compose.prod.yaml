@@ -2,7 +2,9 @@ version: '1'
 
 services:
   db:
-    image: mysql:8.0
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod.mysql 
     ports:
       - 127.0.0.1:3306:3306
     volumes:

@@ -1,0 +1,6 @@
+FROM mysql:8.0
+
+# Add custom configuration
+RUN echo "[mysqld]" >> /etc/mysql/my.cnf && \
+    echo "performance_schema = off" >> /etc/mysql/my.cnf
+    
